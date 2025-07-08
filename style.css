@@ -1,0 +1,10 @@
+:root {
+    --base_black: #1b1b1b;
+    --base_white: #fff;
+}
+
+.dflex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
