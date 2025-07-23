@@ -1,10 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 :root {
+    /* Colors */
     --base_black: #1b1b1b;
+    --black_25: #00000040;
     --base_white: #fff;
+    --base_dark_blue: #202736;
+    --base_dark: #181D23;
+    --base_gold: #F9B700;
+
+    /* Fonts */
+    --playfair_font: "Playfair Display", serif;
+    --jakarta_font: "Plus Jakarta Sans", sans-serif;
 }
 
-.dflex-center {
+body {
+    font-family: var(--jakarta_font);
+    font-optical-sizing: auto;
+    font-size: clamp(12px, 4vw, 20px);
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--playfair_font);
+}
+
+h1 { 
+    font-size: clamp(45px, 4vw, 55px);
+    font-weight: bold; 
+}
+
+h2 { 
+    font-size: clamp(25px, 4vw, 35px); 
+    font-weight: 600;
+}
+
+h3 { 
+    font-size: clamp(15px, 4vw, 25px); 
+    font-weight: 500;
+}
+
+.btn {
+    padding: 0.625em 1.875em;
+    border-radius: 50%;
+    font-weight: 500;
+}
+
+.primary-btn {
+    border: 1px solid var(--base_white);
+    border-bottom: 2px solid var(--base_white);
+    background-color: var(--black_25);
+    color: var(--base_white);
+}
+
+.gold-btn {
+    border: 1px solid var(--base_gold);
+    border-bottom: 2px solid var(--base_gold);
+    background-color: var(--base_gold);
+    color: var(--base_black);
+}
+
+.dflex {
     display: flex;
-    justify-content: center;
     align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.justify-end {
+    justify-content: flex-end;
 }
