@@ -11,11 +11,12 @@
 </head>
 <body>
     <header class="container">
-        <div class="dflex justify-around">
+        <nav class="dflex justify-around" aria-label="Main navigation">
             <div>
-                <a href="#">AJ IÑigo</a>
+                <a href="#">Aj Iñigo</a>
             </div>
 
+            <!-- Main menu -->
             <div>
                 <ul class="dflex gap-12">
                     <li><a href="#">Home</a></li>
@@ -25,42 +26,57 @@
                 </ul>
             </div>
 
+            <!-- Social Links -->
             <div>
                 <ul class="dflex gap-12">
-                    <li><a href="#">linkedin</a></li>
-                    <li><a href="#">github</a></li>
-                    <li><a href="#">codepen</a></li>
+                    <li>
+                        <a href="#" class="linkedin">
+                            <span class="sr-only">linkedin</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="github">
+                            <span class="sr-only">github</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="codepen">
+                            <span class="sr-only">codepen</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
-        </div>
+        </nav>
     </header>
 
     <main>
-        <section>
+        <section class="banner" aria-label="Introduction">
             <div class="container">
-                <div>
+                <div class="banner-text">
                 <h1>
-                    I solve <span>problems</span> with code ...
+                    I solve <span>problems</span> with code ... <br>
                     ...because duct tape isn't <span>scalable.</span>
                     </h1>
                 </div>
 
-                <div class="dflex justify-center">
+                <div class="dflex justify-center  banner-buttons">
                     <a href="#">View Portfolio</a>
                     <a href="#">Get in touch</a>
                 </div>
             </div>
         </section>
 
-        <section>
+        <section class="about" aria-label="About Me">
             <div class="container">
-                <div>
+                <div class="about-header">
                     <h2>Web Dev That Doesn’t Break When You Blink</h2>
                     <h3>I design, I code, I debug... so you don’t have to.</h3>
                 </div>
 
-                <div class="dflex">
-                    <div>
+                <div class="dflex about-content">
+                    <div class="about-text">
                         Building a website is easy.
                         Building one that users understand, trust, and enjoy using? That’s where most businesses get stuck.
 
@@ -71,99 +87,119 @@
                         If your site isn’t doing what it’s supposed to do, let’s fix that — from the inside out.
                     </div>
 
-                    <div>
-                        image
+                    <div class="about-image">
+                        <img src="" alt="AJ Iñigo working on web design ">
                     </div>
                 </div>
             </div>
         </section>
         
-        <section>
-            <div class="container">
+        <section class="projects" aria-label="Portfolio Projects">
+            <div class="container projects-header">
                 <h2>Some Of My Dibs</h2>
                 <h3>
                     A collection of personal projects, code experiments, and UI doodles from GitHub and CodePen — built in the wild pockets of my free time  (a.k.a. when coffee and curiosity collide).
                 </h3>
             </div>
 
-            <div class="container">
-                <div class="dflex">
-                    <div>
-                        image
+            <div class="container projects-lists">
+                <article class="project dflex">
+                    <div class="project-image">
+                        <img src="" alt="screenshot of project 1">
                     </div>
-                    <div>
-                        <div>
-                            <h4>Title</h4>
-                            <p>Description</p>
-                        </div>
-                        <div>
-                            <a href="#">View on Github</a>
-                            <a href="#">View on CodePen</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="dflex">
-                    <div>
-                        image
-                    </div>
-                    <div>
+                    <div class="project-info">
                         <div>
-                            <h4>Title</h4>
-                            <p>Description</p>
+                            <h4>Project Title</h4>
+                            <p>A short description of what this project is about and the problem it solves.</p>
                         </div>
-                        <div>
+                        
+                        <div class="project-links">
                             <a href="#">View on Github</a>
                             <a href="#">View on CodePen</a>
                         </div>
                     </div>
-                </div>
+                </article>
+
+                <article class="project dflex">
+                    <div class="project-image">
+                        <img src="" alt="screenshot of project 2">
+                    </div>
+
+                    <div class="project-info">
+                        <div>
+                            <h4>Project Title</h4>
+                            <p>A short description of what this project is about and the problem it solves.</p>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="#">View on Github</a>
+                            <a href="#">View on CodePen</a>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div>
+    <footer class="footer" aria-label="Contact Section">
+        <div class="container footer-content">
+            <div class="footer-text">
                 <h2>Reach Out — I Don’t Byte (Usually)</h2>
-                <h3>Use the form below or shoot an email to email@example.com — it's like a contact form, but with fewer buttons.</h3>
+                <h3>Use the form below or shoot an email to 
+                    <a href="#">email@example.com</a> — it's like a contact form, but with fewer buttons.</h3>
             </div>
 
-            <div class="dflex">
-                <div>
-                    <form action="">
-                        <div>
+            <div class="dflex footer-form-wrap">
+                <div class="footer-form">
+                    <form action="" method="POST">
+                        <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" id="name">
+                            <input type="text" name="name" id="name" placeholder="Your Name" required>
                         </div>
 
-                        <div>
+                        <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email">
+                            <input type="email" name="email" id="email" placeholder="Your Email" required>
                         </div>
 
-                        <div>
-                            <textarea name="message" id="message">Message</textarea>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="5"  placeholder="Your Message" required></textarea>
                         </div>
 
-                        <div>
+                        <div class="form-group">
                             <input type="submit" name="submit" id="submit" value="submit">
                         </div>
                     </form>
                 </div>
 
-                <div>
-                    image
+                <div class="footer-image">
+                    <img src="" alt="Contact Illustration">
                 </div>
             </div>
         </div>
 
-        <div>
+        <div class="footer-bottom">
             <div class="container">
-                <ul class="dflex justify-end gap-12 ">
-                    <li><a href="#">linkedin</a></li>
-                    <li><a href="#">github</a></li>
-                    <li><a href="#">codepen</a></li>
+                <ul class="dflex justify-end gap-12 social-links">
+                    <li>
+                        <a href="#" class="linkedin">
+                            <span class="sr-only">linkedin</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="github">
+                            <span class="sr-only">github</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="codepen">
+                            <span class="sr-only">codepen</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
