@@ -6,6 +6,7 @@
     --base_black: #1b1b1b;
     --black_25: #00000040;
     --base_white: #fff;
+    --white_50: #ffffff78;
     --base_dark_blue: #202736;
     --base_dark: #181D23;
     --base_gold: #F9B700;
@@ -13,6 +14,10 @@
     /* Fonts */
     --playfair_font: "Playfair Display", serif;
     --jakarta_font: "Plus Jakarta Sans", sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 body {
@@ -41,6 +46,8 @@ h3 {
     font-weight: 500;
 }
 
+ul { padding: 0; }
+
 ul li {
     list-style-type: none;
 }
@@ -55,10 +62,13 @@ a {
     margin: 0 auto;
 }
 
+.width_90 { width: 90%; }
+
 .btn {
     padding: 0.625em 1.875em;
-    border-radius: 50%;
+    border-radius: 50px;
     font-weight: 500;
+    box-shadow: 0px 4px 4px var(--base_dark);
 }
 
 .primary-btn {
@@ -114,6 +124,7 @@ a {
     font-family: "FontAwesome";
     font-style: normal;
     font-weight: normal;
+    font-size: 20px;
     text-decoration: none;
     display: inline-block;
     speak: none;
@@ -129,4 +140,72 @@ a {
 
 .codepen::before {
     content: "\f1cb";
+}
+
+/********************************************************************
+*                           HEADER
+*********************************************************************/
+#header {
+    position: fixed;
+    max-width: 100%;
+    top: 0;
+    margin-top: 3rem;
+}
+
+nav {
+    background-color: var(--black_25);
+    border-radius: 50px;
+}
+
+nav a {
+    color: var(--base_white);
+}
+
+.site-logo {
+    font-family: var(--playfair_font);
+    font-size: 25px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+/********************************************************************
+*                           BANNER
+*********************************************************************/
+#banner {
+    background: 
+        url("../images/city.webp") no-repeat bottom/contain,
+        url("../images/stars.svg") repeat,
+        linear-gradient(#181D23 20%, #202736 100%);
+    padding: 5rem 0;
+    height: 70vh;
+}
+
+#banner::before {
+    content: "";
+    position: absolute;
+    top: calc(25% - 10%);
+    right: calc(30% - 10%);
+    height: 200px;
+    width: 200px;
+    background: url(../images/moon.webp) no-repeat center / contain;
+    z-index: 0;
+    display: block;
+    pointer-events: none;
+    border-radius: 100px;
+    box-shadow: 0 0 125px var(--white_50);
+}
+
+.banner-content { z-index: 1;}
+
+#banner h1 {
+    text-shadow: 1px 1px var(--base_black), 0px 4px 4px var(--base_dark);
+    color: var(--base_white);
+}
+
+#banner h1 span {
+    color: var(--base_gold);
+}
+
+.banner-buttons {
+    gap: clamp(1rem, 5vw, 10rem);
 }
