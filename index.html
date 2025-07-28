@@ -11,7 +11,7 @@
 </head>
 <body>
     <header id="header" class="container">
-        <nav id="main-nav" class="container dflex justify-around width_90" aria-label="Main navigation">
+        <nav id="main-nav" class="container dflex justify-around width_90 padding-1rem" aria-label="Main navigation">
             <div>
                 <a href="#" class="site-logo">Aj Iñigo</a>
             </div>
@@ -21,7 +21,7 @@
                 <ul class="dflex gap-12">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Portfolio</a></li>  
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
@@ -107,7 +107,7 @@
                     <h2 class="text-center">Some Of My Dibs</h2>
                 </div>
                 <h3 class="text-center">
-                    A collection of personal projects, code experiments, and UI doodles from GitHub and CodePen — built in the wild pockets of my free time  (a.k.a. when coffee and curiosity collide).
+                    A collection of personal projects, code experiments, and UI doodles from GitHub and CodePen — built in the wild pockets of my free time (a.k.a. when coffee and curiosity collide).
                 </h3>
             </div>
 
@@ -152,32 +152,36 @@
     </main>
 
     <footer class="footer" aria-label="Contact Section">
-        <div class="container width_90 footer-content">
-            <div class="footer-text">
-                <h2>Reach Out — I Don’t Byte (Usually)</h2>
-                <h3>Use the form below or shoot an email to 
+        <div class="container width_90 footer-content dflex justify-center flex-column">
+            <div class="footer-text dflex justify-center flex-column width_60">
+                <div class="gold-uline">
+                    <h2>Reach Out — I Don’t Byte (Usually)</h2>
+                </div>
+                <h3 class="text-center">Use the form below or shoot an email to 
                     <a href="#">email@example.com</a> — it's like a contact form, but with fewer buttons.</h3>
             </div>
 
             <div class="dflex footer-form-wrap">
                 <div class="footer-form">
                     <form action="" method="POST">
-                        <div class="form-group">
+                        <div class="form-group padding-1rem dflex justify-start">
                             <label for="name">Name</label>
-                            <input type="text" name="name" id="name" placeholder="Your Name" required>
+                            <input type="text" name="name" id="name" required>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group padding-1rem dflex justify-start">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Your Email" required>
+                            <input type="email" name="email" id="email" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" rows="5"  placeholder="Your Message" required></textarea>
+                        <div class="form-group padding-1rem dflex">
+                            <div class="sr-only">
+                                <label for="message">Message</label>
+                            </div>
+                            <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group padding-1rem">
                             <input type="submit" name="submit" id="submit" value="submit">
                         </div>
                     </form>
@@ -191,7 +195,7 @@
 
         <div class="footer-bottom">
             <div class="container width_90">
-                <ul class="dflex justify-end gap-12 social-links">
+                <ul class="dflex justify-end gap-12 social-links padding-1rem">
                     <li>
                         <a href="#" class="linkedin">
                             <span class="sr-only">linkedin</span>
