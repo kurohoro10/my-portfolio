@@ -61,6 +61,15 @@ a {
     color: var(--base_white);
 }
 
+i { margin-left: 10px; }
+
+input, textarea {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: var(--base_white);
+}
+
 .container {
     width: 100%;
     max-width: 1060px;
@@ -74,6 +83,10 @@ a {
 .width_60 { width: 60%; }
 
 .width_35 { width: 35%; }
+
+.form-group { border-bottom: 1px solid var(--base_white); }
+
+.form-group:last-child { border-bottom: none; }
 
 .btn {
     padding: 0.625em 1.875em;
@@ -105,6 +118,8 @@ a {
 .align-start { align-items: flex-start; }
 
 .justify-center { justify-content: center; }
+
+.justify-between { justify-content: space-between; }
 
 .justify-around { justify-content: space-around; }
 
@@ -283,11 +298,11 @@ nav {
 /********************************************************************
 *                           PROJECTS
 *********************************************************************/
+#projects { margin-top: 3rem; }
+
 #projects h3 { margin: 0; }
 
-.project-info {
-    border-radius: 0 10px 10px 0;
-}
+.project-info { border-radius: 0 10px 10px 0; }
 
 /******************************* End *************************************/
 
@@ -298,6 +313,14 @@ nav {
 *********************************************************************/
 footer {
     border-radius: 0;
-    padding-bottom: 0;
+    padding: 3rem 0 0 0;
 }
+
+.footer-form-wrap { margin-bottom: 2rem; }
+
+.footer-form { flex-grow: 1; }
+
+#footer-form .form-group{ padding-left: 0; }
+
+.footer-bottom { background-color: var(--base_dark); }
 /******************************* End *************************************/

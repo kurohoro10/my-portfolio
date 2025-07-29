@@ -123,9 +123,15 @@
                             <p>A short description of what this project is about and the problem it solves.</p>
                         </div>
                         
-                        <div class="project-links">
-                            <a href="#">View on Github</a>
-                            <a href="#">View on CodePen</a>
+                        <div class="project-links dflex gap-3rem">
+                            <a href="#" class="btn primary-btn">
+                                View on Github
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <a href="#" class="btn primary-btn">
+                                View on CodePen
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -141,9 +147,15 @@
                             <p>A short description of what this project is about and the problem it solves.</p>
                         </div>
                         
-                        <div class="project-links">
-                            <a href="#">View on Github</a>
-                            <a href="#">View on CodePen</a>
+                        <div class="project-links dflex gap-3rem">
+                            <a href="#" class="btn primary-btn">
+                                View on Github
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <a href="#" class="btn primary-btn">
+                                View on CodePen
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -161,28 +173,32 @@
                     <a href="#">email@example.com</a> — it's like a contact form, but with fewer buttons.</h3>
             </div>
 
-            <div class="dflex footer-form-wrap">
+            <div class="dflex justify-between footer-form-wrap gap-3rem width_60">
                 <div class="footer-form">
-                    <form action="" method="POST">
+                    <form id="footer-form" action="" method="POST">
                         <div class="form-group padding-1rem dflex justify-start">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" required>
+                            <div class="sr-only">
+                                <label for="name">Name</label>
+                            </div>
+                            <input type="text" name="name" id="name" placeholder="Name" required>
                         </div>
 
                         <div class="form-group padding-1rem dflex justify-start">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" required>
+                            <div class="sr-only">
+                                <label for="email">Email</label>
+                            </div>
+                            <input type="email" name="email" id="email" placeholder="Email" required>
                         </div>
 
                         <div class="form-group padding-1rem dflex">
                             <div class="sr-only">
                                 <label for="message">Message</label>
                             </div>
-                            <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
+                            <textarea name="message" id="message" rows="3" placeholder="Message" required></textarea>
                         </div>
 
                         <div class="form-group padding-1rem">
-                            <input type="submit" name="submit" id="submit" value="submit">
+                            <input type="submit" name="submit" id="submit" value="submit" class="btn primary-btn">
                         </div>
                     </form>
                 </div>
