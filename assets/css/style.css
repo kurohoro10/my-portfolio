@@ -10,6 +10,7 @@
     --black_25: #00000040;
     --base_white: #fff;
     --white_50: #ffffff78;
+    --linkedin_blue: #0a66c2;
     --base_dark_blue: #202736;
     --dark_blue_80: #202736c9;
     --base_dark: #181D23;
@@ -59,6 +60,11 @@ ul li { list-style-type: none; }
 a {
     text-decoration: none;
     color: var(--base_white);
+    transition: color ease-in-out 0.45s;
+}
+
+a:hover {
+    color: var(--base_gold);
 }
 
 i { margin-left: 10px; }
@@ -109,6 +115,14 @@ input, textarea {
     border: 1px solid var(--base_white);
     border-bottom: 2px solid var(--base_white);
     background-color: var(--black_25);
+    transition: all ease-in-out 0.3s;
+}
+
+.primary-btn:hover {
+    border: 1px solid var(--base_gold);
+    border-bottom: 2px solid var(--base_gold);
+    background-color: var(--base_gold);
+    color: var(--base_black);
 }
 
 .gold-btn {
@@ -116,6 +130,14 @@ input, textarea {
     border-bottom: 2px solid var(--base_gold);
     background-color: var(--base_gold);
     color: var(--base_black);
+    transition: all ease-in-out 0.3s;
+}
+
+.gold-btn:hover {
+    border: 1px solid var(--base_white);
+    border-bottom: 2px solid var(--base_white);
+    background-color: var(--black_25);
+    color: var(--base_white);
 }
 
 .dflex {
@@ -169,6 +191,28 @@ footer {
 /* End of transparent dark blue background */
 
 /* Social icons */
+.linkedin,
+.github,
+.codepen {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    transition: all ease-in-out 0.45s;
+}
+
+.linkedin:hover,
+.github:hover,
+.codepen:hover {
+    background-color: var(--base_white);
+    transform: scale(1.2);
+}
+
+.linkedin:hover { color: var(--linkedin_blue); }
+
+.github:hover { color: var(--base_black); }
+
+.codepen:hover { color: var(--base_black); }
+
 .linkedin::before,
 .github::before,
 .codepen::before {
