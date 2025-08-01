@@ -63,10 +63,6 @@ a {
     transition: color ease-in-out 0.45s;
 }
 
-a:hover {
-    color: var(--base_gold);
-}
-
 i { margin-left: 10px; }
 
 input, textarea {
@@ -74,6 +70,7 @@ input, textarea {
     border: none;
     background-color: transparent;
     color: var(--base_white);
+    width: 100%;
 }
 
 .container {
@@ -108,7 +105,6 @@ input, textarea {
     padding: 0.625em 1.875em;
     border-radius: 50px;
     font-weight: 500;
-    box-shadow: 0px 4px 4px var(--base_dark);
 }
 
 .primary-btn {
@@ -215,7 +211,8 @@ footer {
 
 .linkedin::before,
 .github::before,
-.codepen::before {
+.codepen::before,
+.btn-icon::after {
     font-family: "FontAwesome";
     font-style: normal;
     font-weight: normal;
@@ -231,6 +228,11 @@ footer {
 
 .codepen::before { content: "\f1cb"; }
 /* End of social icons */
+
+.btn-icon::after { 
+    content: "\f08e";
+    margin-left: 10px;
+}
 
 /* Accessbility */
 .moon, .overlay { role: presentation; }
@@ -266,11 +268,42 @@ nav {
     border-radius: 50px;
 }
 
+.main-menu ul li { position: relative; }
+
+.main-menu ul li::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background: var(--base_gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-menu ul li:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.main-menu ul li::after { transform-origin: right; }
+
+.main-menu ul li:hover a {
+    color: var(--base_gold);
+}
+
 .site-logo {
     font-family: var(--playfair_font);
     font-size: 25px;
     font-weight: 900;
     text-transform: uppercase;
+    transition: color ease-in-out 0.3s;
+}
+
+.site-logo:hover {
+ color: var(--base_gold);
 }
 
 .banner-content, .about-content {
@@ -454,4 +487,11 @@ footer {
 @media screen and (min-width: 768px ) {
     .footer-form-wrap {flex-direction: row; }
 }
+/******************************* End *************************************/
+
+
+/********************************************************************
+*                           KEYFRAMES
+*********************************************************************/
+
 /******************************* End *************************************/

@@ -6,12 +6,12 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script defer src="https://kit.fontawesome.com/d479960ce7.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/61c5d3d4be.js" crossorigin="anonymous"></script>
     <script defer src="assets/js/script.js"></script>
 </head>
 <body>
     <header id="header" class="container">
-        <nav id="main-nav" class="container dflex justify-around width_90 padding-1rem" aria-label="Main navigation">
+        <nav id="main-nav" class="container dflex justify-around width_90" aria-label="Main navigation">
             <div>
                 <a href="#" class="site-logo">Aj Iñigo</a>
             </div>
@@ -19,10 +19,18 @@
             <!-- Main menu -->
             <div class="main-menu">
                 <ul class="dflex gap-12">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Portfolio</a></li>  
-                    <li><a href="#">Contact</a></li>
+                    <li class="padding-1rem">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="padding-1rem">
+                        <a href="#">About</a>
+                    </li>
+                    <li class="padding-1rem">
+                        <a href="#">Portfolio</a>
+                    </li>  
+                    <li class="padding-1rem">
+                        <a href="#">Contact</a>
+                    </li>
                 </ul>
             </div>
 
@@ -63,9 +71,8 @@
                 </div>
 
                 <div class="dflex banner-buttons">
-                    <a href="#" class="btn primary-btn">
+                    <a href="#" class="btn primary-btn btn-icon">
                         View Portfolio
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                     </a>
                     <a href="#" class="btn gold-btn">
                         Get in touch
@@ -129,13 +136,11 @@
                         </div>
                         
                         <div class="project-links dflex gap-3rem">
-                            <a href="#" class="btn primary-btn">
+                            <a href="#" class="btn primary-btn btn-icon">
                                 View on Github
-                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                             </a>
-                            <a href="#" class="btn primary-btn">
+                            <a href="#" class="btn primary-btn btn-icon">
                                 View on CodePen
-                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -153,13 +158,11 @@
                         </div>
                         
                         <div class="project-links dflex gap-3rem">
-                            <a href="#" class="btn primary-btn">
+                            <a href="#" class="btn primary-btn btn-icon">
                                 View on Github
-                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                             </a>
-                            <a href="#" class="btn primary-btn">
+                            <a href="#" class="btn primary-btn btn-icon">
                                 View on CodePen
-                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -199,7 +202,7 @@
                             <div class="sr-only">
                                 <label for="message">Message</label>
                             </div>
-                            <textarea name="message" id="message" rows="3" placeholder="Message" required></textarea>
+                            <textarea name="message" id="message" placeholder="Message" required></textarea>
                         </div>
 
                         <div class="form-group padding-1rem">
@@ -238,5 +241,30 @@
             </div>
         </div>
     </footer>
+
+    <div class="mobile-nav">
+         <ul class="dflex gap-12">
+            <li>
+                <a href="#">
+                    <div class="sr-only">Home</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="sr-only">About</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="sr-only">Portfolio</div>
+                </a>
+            </li>  
+            <li>
+                <a href="#">
+                    <div class="sr-only">Contact</div>
+                </a>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
