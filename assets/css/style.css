@@ -23,6 +23,18 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none!important;
+        transition: none!important;
+    }
+}
+
+/* Remove focus for mouse user */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -109,6 +121,11 @@ input, textarea {
     font-weight: 500;
 }
 
+.btn:focus {
+    outline: 2px solid var(--base_gold);
+    outline-offset: 2px;
+}
+
 .primary-btn {
     border: 1px solid var(--base_white);
     border-bottom: 2px solid var(--base_white);
@@ -175,6 +192,27 @@ input, textarea {
     background-color: var(--white_50);
 }
 
+.tooltip {
+  position: absolute;
+  left: -300%;
+  top: 0;
+  background: var(--base_black);
+  color: var(--base_white);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  z-index: 100;
+  max-width: 200px;
+  /* display: none; */
+}
+
+.tooltip::after {
+    content: "";
+    background-color: red;
+    width: 10px;
+    height: 100%;
+}
+
 /* Gold underline */
 .gold-uline { border-bottom: 1px solid gold; }
 
@@ -189,6 +227,8 @@ footer {
 /* End of transparent dark blue background */
 
 /* Social icons */
+.social-links li { position: relative; }
+
 .linkedin,
 .github,
 .codepen {
@@ -203,6 +243,17 @@ footer {
 .codepen:hover {
     background-color: var(--base_white);
     transform: scale(1.2);
+}
+
+a.linkedin:hover + .tooltip,
+a.linkedin:focus + .tooltip,
+a.github:hover + .tooltip,
+a.github:focus + .tooltip,
+a.codepen:hover + .tooltip,
+a.codepen:focus + .tooltip {
+    display: block;
+    animation: fade_in 0.3s linear forwards, 
+               slide_in_subtle 0.3s linear forwards;
 }
 
 .linkedin:hover { color: var(--linkedin_blue); }
@@ -238,8 +289,6 @@ footer {
 }
 
 /* Accessbility */
-.moon, .overlay { role: presentation; }
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -250,6 +299,22 @@ footer {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
+  z-index: 1000;
 }
 /* End of accessbility */
 /******************************* End *************************************/
@@ -344,6 +409,15 @@ nav {
 }
 
 .main-menu { display: none; }
+
+/* Scroll target */
+#about-anchor, #projects-anchor {
+  position: relative;
+  top: -150px;
+  height: 0;
+  visibility: hidden;
+}
+
 
 @media screen and (min-width: 768px) {
     .main-menu { display: block; }
@@ -520,5 +594,14 @@ footer {
 /********************************************************************
 *                           KEYFRAMES
 *********************************************************************/
+@keyframes fade_in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slide_in_subtle {
+    0% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
 
 /******************************* End *************************************/

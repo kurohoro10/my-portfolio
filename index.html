@@ -10,6 +10,8 @@
     <script defer src="assets/js/script.js"></script>
 </head>
 <body>
+    <a href="#main" class="sr-only sr-only-focusable">Skip to content</a>
+
     <header id="header" class="container">
         <nav id="main-nav" class="container dflex justify-around width_90" aria-label="Main navigation">
             <div>
@@ -21,22 +23,22 @@
                 <ul class="dflex gap-12 flex-column ">
                     <li>
                         <a href="#banner">
-                            <div class="sr-only">Home</div>
+                            <span class="sr-only">Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#about">
-                            <div class="sr-only">About</div>
+                        <a href="#about-anchor">
+                            <span class="sr-only">About</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#projects">
-                            <div class="sr-only">Portfolio</div>
+                        <a href="#projects-anchor">
+                            <span class="sr-only">Portfolio</span>
                         </a>
                     </li>  
                     <li>
                         <a href="#footer">
-                            <div class="sr-only">Contact</div>
+                            <span class="sr-only">Contact</span>
                         </a>
                     </li>
                 </ul>
@@ -48,10 +50,10 @@
                         <a href="#banner">Home</a>
                     </li>
                     <li>
-                        <a href="#about">About</a>
+                        <a href="#about-anchor">About</a>
                     </li>
                     <li>
-                        <a href="#projects">Portfolio</a>
+                        <a href="#projects-anchor">Portfolio</a>
                     </li>  
                     <li>
                         <a href="#footer">Contact</a>
@@ -61,32 +63,35 @@
 
             <!-- Social Links -->
             <div>
-                <ul class="dflex gap-12">
+                <ul class="dflex gap-12 social-links">
                     <li>
-                        <a href="https://www.linkedin.com/in/aj-i%C3%B1igo/" target="_blank" class="dflex justify-center linkedin">
-                            <span class="sr-only">linkedin</span>
+                        <a href="https://www.linkedin.com/in/aj-i%C3%B1igo/" target="_blank" class="dflex justify-center linkedin" rel="noopener noreferrer" aria-describedby="linkedin-tooltip">
+                            <span class="sr-only">LinkedIn</span>
                         </a>
+                        <div id="linkedin-tooltip" role="tooltip" class="tooltip">LinkedIn</div>
                     </li>
 
                     <li>
-                        <a href="https://github.com/kurohoro10" target="_blank" class="dflex justify-center github">
-                            <span class="sr-only">github</span>
+                        <a href="https://github.com/kurohoro10" target="_blank" class="dflex justify-center github" rel="noopener noreferrer" aria-describedby="github-tooltip">
+                            <span class="sr-only">Github</span>
                         </a>
+                        <div id="github-tooltip" role="tooltip" class="tooltip">Github</div>
                     </li>
 
                     <li>
-                        <a href="https://codepen.io/so_0me" target="_blank" class="dflex justify-center codepen">
-                            <span class="sr-only">codepen</span>
+                        <a href="https://codepen.io/so_0me" target="_blank" class="dflex justify-center codepen" rel="noopener noreferrer" aria-describedby="codepen-tooltip">
+                            <span class="sr-only">Codepen</span>
                         </a>
+                        <div id="codepen-tooltip" role="tooltip" class="tooltip">Codepen</div>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main id="main">
         <section id="banner" class="banner dflex" aria-label="Introduction">
-            <div class="moon" aria-hidden="true"></div>
+            <div class="moon" role="presentation" aria-hidden="true"></div>
             <div class="container width_90 banner-content">
                 <div class="banner-text">
                     <h1>
@@ -107,8 +112,9 @@
         </section>
 
         <section id="about" class="about" aria-label="About Me">
-            <div class="overlay" aria-hidden="true"></div>
-            <div class="moon" aria-hidden="true"></div>
+            <div id="about-anchor" role="none" aria-hidden="true"></div>
+            <div class="overlay" role="presentation" aria-hidden="true"></div>
+            <div class="moon" role="presentation" aria-hidden="true"></div>
             <div class="container width_90 about-content">
                 <div class="about-header dflex justify-center flex-column">
                     <div class="gold-uline">
@@ -139,6 +145,7 @@
         </section>
         
         <section id="projects" class="projects" aria-label="Portfolio Projects">
+            <div id="projects-anchor" role="none" aria-hidden="true"></div>
             <div class="container width_65 projects-header dflex justify-center flex-column padding-3rem">
                 <div class="gold-uline">
                     <h2 class="text-center">Some Of My Dibs</h2>
@@ -210,28 +217,22 @@
                 <div class="footer-form">
                     <form id="footer-form" action="" method="POST">
                         <div class="form-group padding-1rem dflex justify-start">
-                            <div class="sr-only">
-                                <label for="name">Name</label>
-                            </div>
+                            <label for="name" class="sr-only">Name</label>
                             <input type="text" name="name" id="name" placeholder="Name" required>
                         </div>
 
                         <div class="form-group padding-1rem dflex justify-start">
-                            <div class="sr-only">
-                                <label for="email">Email</label>
-                            </div>
+                            <label for="email" class="sr-only">Email</label>
                             <input type="email" name="email" id="email" placeholder="Email" required>
                         </div>
 
                         <div class="form-group padding-1rem dflex">
-                            <div class="sr-only">
-                                <label for="message">Message</label>
-                            </div>
+                            <label for="message" class="sr-only">Message</label>
                             <textarea name="message" id="message" placeholder="Message" required></textarea>
                         </div>
 
                         <div class="form-group padding-1rem">
-                            <input type="submit" name="submit" id="submit" value="submit" class="btn primary-btn">
+                            <input type="submit" name="submit" id="submit" class="btn primary-btn" value="Send Message" aria-label="Send message form">
                         </div>
                     </form>
                 </div>
@@ -246,21 +247,24 @@
             <div class="container width_90">
                 <ul class="dflex justify-end gap-12 social-links padding-1rem">
                     <li>
-                        <a href="https://www.linkedin.com/in/aj-i%C3%B1igo/" target="_blank" class="dflex justify-center linkedin">
-                            <span class="sr-only">linkedin</span>
+                        <a href="https://www.linkedin.com/in/aj-i%C3%B1igo/" target="_blank" class="dflex justify-center linkedin" rel="noopener noreferrer" aria-describedby="footer-tooltip-linkedin">
+                            <span class="sr-only">LinkedIn</span>
                         </a>
+                        <div id="footer-tooltip-linkedin" role="tooltip" class="tooltip">LinkedIn</div>
                     </li>
 
                     <li>
-                        <a href="https://github.com/kurohoro10" target="_blank" class="dflex justify-center github">
-                            <span class="sr-only">github</span>
+                        <a href="https://github.com/kurohoro10" target="_blank" class="dflex justify-center github" rel="noopener noreferrer" aria-describedby="footer-tooltip-github">
+                            <span class="sr-only">Github</span>
                         </a>
+                        <div id="footer-tooltip-github" role="tooltip" class="tooltip">Github</div>
                     </li>
 
                     <li>
-                        <a href="https://codepen.io/so_0me" target="_blank" class="dflex justify-center codepen">
-                            <span class="sr-only">codepen</span>
+                        <a href="https://codepen.io/so_0me" target="_blank" class="dflex justify-center codepen" rel="noopener noreferrer" aria-describedby="footer-tooltip-codepen">
+                            <span class="sr-only">Codepen</span>
                         </a>
+                        <div id="footer-tooltip-codepen" role="tooltip" class="tooltip">Codepen</div>
                     </li>
                 </ul>
             </div>
