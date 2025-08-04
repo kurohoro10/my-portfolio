@@ -6,7 +6,7 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://kit.fontawesome.com/61c5d3d4be.js" crossorigin="anonymous"></script>
+    <script defer src="https://kit.fontawesome.com/61c5d3d4be.js" crossorigin="anonymous"></script>
     <script defer src="assets/js/script.js"></script>
 </head>
 <body>
@@ -17,19 +17,44 @@
             </div>
 
             <!-- Main menu -->
+            <div class="mobile-nav">
+                <ul class="dflex gap-12 flex-column ">
+                    <li>
+                        <a href="#banner">
+                            <div class="sr-only">Home</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about">
+                            <div class="sr-only">About</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#projects">
+                            <div class="sr-only">Portfolio</div>
+                        </a>
+                    </li>  
+                    <li>
+                        <a href="#footer">
+                            <div class="sr-only">Contact</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
             <div class="main-menu">
                 <ul class="dflex gap-12">
-                    <li class="padding-1rem">
-                        <a href="#">Home</a>
+                    <li>
+                        <a href="#banner">Home</a>
                     </li>
-                    <li class="padding-1rem">
-                        <a href="#">About</a>
+                    <li>
+                        <a href="#about">About</a>
                     </li>
-                    <li class="padding-1rem">
-                        <a href="#">Portfolio</a>
+                    <li>
+                        <a href="#projects">Portfolio</a>
                     </li>  
-                    <li class="padding-1rem">
-                        <a href="#">Contact</a>
+                    <li>
+                        <a href="#footer">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -38,19 +63,19 @@
             <div>
                 <ul class="dflex gap-12">
                     <li>
-                        <a href="#" class="dflex justify-center linkedin">
+                        <a href="https://www.linkedin.com/in/aj-i%C3%B1igo/" target="_blank" class="dflex justify-center linkedin">
                             <span class="sr-only">linkedin</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="dflex justify-center github">
+                        <a href="https://github.com/kurohoro10" target="_blank" class="dflex justify-center github">
                             <span class="sr-only">github</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="dflex justify-center codepen">
+                        <a href="https://codepen.io/so_0me" target="_blank" class="dflex justify-center codepen">
                             <span class="sr-only">codepen</span>
                         </a>
                     </li>
@@ -171,7 +196,7 @@
         </section>
     </main>
 
-    <footer class="footer" aria-label="Contact Section">
+    <footer id="footer" class="footer" aria-label="Contact Section">
         <div class="container width_90 footer-content dflex justify-center flex-column">
             <div class="footer-text dflex justify-center flex-column width_60">
                 <div class="gold-uline">
@@ -221,19 +246,19 @@
             <div class="container width_90">
                 <ul class="dflex justify-end gap-12 social-links padding-1rem">
                     <li>
-                        <a href="#" class="dflex justify-center linkedin">
+                        <a href="https://www.linkedin.com/in/aj-i%C3%B1igo/" target="_blank" class="dflex justify-center linkedin">
                             <span class="sr-only">linkedin</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="dflex justify-center github">
+                        <a href="https://github.com/kurohoro10" target="_blank" class="dflex justify-center github">
                             <span class="sr-only">github</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="dflex justify-center codepen">
+                        <a href="https://codepen.io/so_0me" target="_blank" class="dflex justify-center codepen">
                             <span class="sr-only">codepen</span>
                         </a>
                     </li>
@@ -241,30 +266,5 @@
             </div>
         </div>
     </footer>
-
-    <div class="mobile-nav">
-         <ul class="dflex gap-12">
-            <li>
-                <a href="#">
-                    <div class="sr-only">Home</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="sr-only">About</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="sr-only">Portfolio</div>
-                </a>
-            </li>  
-            <li>
-                <a href="#">
-                    <div class="sr-only">Contact</div>
-                </a>
-            </li>
-        </ul>
-    </div>
 </body>
 </html>

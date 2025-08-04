@@ -23,6 +23,8 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
 body {
     font-family: var(--jakarta_font);
     font-optical-sizing: auto;
@@ -212,11 +214,12 @@ footer {
 .linkedin::before,
 .github::before,
 .codepen::before,
-.btn-icon::after {
+.btn-icon::after,
+.mobile-nav ul li a::before {
     font-family: "FontAwesome";
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: clamp(12px, 4vw, 20px);
     text-decoration: none;
     display: inline-block;
     speak: none;
@@ -252,6 +255,35 @@ footer {
 /******************************* End *************************************/
 
 
+
+/********************************************************************
+*                           MOBILE MENU
+*********************************************************************/
+.mobile-nav {
+    position: fixed;
+    bottom: 50vh;
+    left: 0;
+    padding: 0.5rem;
+    margin-left: 0.3rem;
+    z-index: 9;
+    background: var(--black_25);
+    border-radius: 50px;
+    opacity: 0.5;
+}
+
+.mobile-nav ul li a::before {
+    content: "\f111";
+    color: var(--white_50);
+    font-size: 10px;
+}
+
+@media screen and ( min-width: 768px ) {
+    .mobile-nav { display: none; }
+}
+/******************************* End *************************************/
+
+
+
 /********************************************************************
 *                           HEADER
 *********************************************************************/
@@ -266,9 +298,13 @@ footer {
 nav {
     background-color: var(--black_25);
     border-radius: 50px;
+    padding: 0 1rem;
 }
 
-.main-menu ul li { position: relative; }
+.main-menu ul li { 
+    position: relative;
+    padding: 1rem 0.5rem;
+}
 
 .main-menu ul li::after {
     content: "";
@@ -290,21 +326,17 @@ nav {
 
 .main-menu ul li::after { transform-origin: right; }
 
-.main-menu ul li:hover a {
-    color: var(--base_gold);
-}
+.main-menu ul li:hover a { color: var(--base_gold); }
 
 .site-logo {
     font-family: var(--playfair_font);
-    font-size: 25px;
+    font-size: clamp(18px, 4vw, 25px);;
     font-weight: 900;
     text-transform: uppercase;
     transition: color ease-in-out 0.3s;
 }
 
-.site-logo:hover {
- color: var(--base_gold);
-}
+.site-logo:hover { color: var(--base_gold); }
 
 .banner-content, .about-content {
     position: relative; 
@@ -384,9 +416,7 @@ nav {
     position: relative;
 }
 
-.about-content {
-    padding: 2rem 1rem;
-}
+.about-content { padding: 2rem 1rem; }
 
 #about::before {
     content: "";
@@ -400,9 +430,7 @@ nav {
     transform: rotateX(180deg);
 }
 
-.about-info {
-    flex-direction: column-reverse;
-}
+.about-info { flex-direction: column-reverse; }
 
 @media screen and (min-width: 768px ) {
     .about-content {
@@ -446,9 +474,7 @@ nav {
 .project-info h4 { margin-top: 0; }
 
 @media screen and (min-width: 768px) {
-    .project {
-        flex-direction: row;
-    }
+    .project { flex-direction: row; }
 
     .project-links { 
         flex-direction: row;
@@ -488,6 +514,7 @@ footer {
     .footer-form-wrap {flex-direction: row; }
 }
 /******************************* End *************************************/
+
 
 
 /********************************************************************
