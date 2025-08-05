@@ -203,14 +203,19 @@ input, textarea {
   font-size: 0.875rem;
   z-index: 100;
   max-width: 200px;
-  /* display: none; */
+  display: none;
 }
 
+/* Tooltip tail */
 .tooltip::after {
-    content: "";
-    background-color: red;
-    width: 10px;
-    height: 100%;
+    content: " ";
+    position: absolute;
+    top: 35%;
+    left: 100%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--base_black);
+    border-radius: 0;
 }
 
 /* Gold underline */
