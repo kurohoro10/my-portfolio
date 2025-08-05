@@ -281,6 +281,11 @@ a.codepen:focus + .tooltip {
     speak: none;
 }
 
+.mobile-nav ul li.active a::before { 
+    color: var(--base_gold);
+    animation: fade_in 0.3s linear forwards;
+}
+
 .linkedin::before { content: "\f0e1"; }
 
 .github::before { content: "\f09b"; }
@@ -373,6 +378,10 @@ nav {
 
 .main-menu ul li { 
     position: relative;
+}
+
+.main-menu ul li a{
+    display: block;
     padding: 1rem 0.5rem;
 }
 
@@ -384,19 +393,22 @@ nav {
     left: 0;
     bottom: 0;
     background: var(--base_gold);
-    transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease-in-out;
 }
 
-.main-menu ul li:hover::after {
+.main-menu ul li::after { transform: scaleX(0); }
+
+.main-menu ul li:hover a, 
+.main-menu ul li.active a { color: var(--base_gold); }
+
+.main-menu ul li:hover::after, 
+.main-menu ul li.active::after {
     transform: scaleX(1);
     transform-origin: left;
 }
 
 .main-menu ul li::after { transform-origin: right; }
-
-.main-menu ul li:hover a { color: var(--base_gold); }
 
 .site-logo {
     font-family: var(--playfair_font);
