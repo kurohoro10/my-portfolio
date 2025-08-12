@@ -130,6 +130,7 @@ input, textarea {
     border: 1px solid var(--base_white);
     border-bottom: 2px solid var(--base_white);
     background-color: var(--black_25);
+    text-align: center;
     transition: all ease-in-out 0.3s;
 }
 
@@ -393,32 +394,42 @@ nav {
     left: 0;
     bottom: 0;
     background: var(--base_gold);
-    transform-origin: left;
+    transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
 }
-
-.main-menu ul li::after { transform: scaleX(0); }
 
 .main-menu ul li:hover a, 
 .main-menu ul li.active a { color: var(--base_gold); }
 
-.main-menu ul li:hover::after, 
-.main-menu ul li.active::after {
-    transform: scaleX(1);
+.main-menu ul li::after { transform-origin: left; }
+
+.main-menu ul li:hover::after,
+.main-menu ul li.active::after { 
     transform-origin: left;
+    transform: scaleX(1); 
 }
 
 .main-menu ul li::after { transform-origin: right; }
 
+.site-logo ,
+.site-logo-svg, 
+.site-logo-svg-alt { transition: all ease-in-out 0.3s; }
+
 .site-logo {
-    font-family: var(--playfair_font);
-    font-size: clamp(18px, 4vw, 25px);;
-    font-weight: 900;
-    text-transform: uppercase;
-    transition: color ease-in-out 0.3s;
+    background: transparent;
+    border: 1px solid var(--base_white);
+    border-radius: 50px;
 }
 
-.site-logo:hover { color: var(--base_gold); }
+.site-logo-svg { fill: var(--base_white); }
+
+.site-logo-svg-alt { fill: var(--base_gold); }
+
+.site-logo:hover { border: 1px solid var(--base_gold); }
+
+.site-logo:hover .site-logo-svg { fill: var(--base_gold); }
+
+.site-logo:hover .site-logo-svg-alt { fill: var(--base_white); }
 
 .banner-content, .about-content {
     position: relative; 
@@ -593,13 +604,15 @@ footer {
     flex-direction: column-reverse;
 }
 
-.footer-form, .footer-image { width: 100%; }
+.footer-form, .footer-image { width: 100%; } 
 
 .footer-form { flex-grow: 1; }
 
 #footer-form .form-group{ padding-left: 0; }
 
 .footer-bottom { background-color: var(--base_dark); }
+
+.footer-email { color: var(--base_gold);}
 
 @media screen and (min-width: 768px ) {
     .footer-form-wrap {flex-direction: row; }

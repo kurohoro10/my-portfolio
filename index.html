@@ -3,23 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>My Portfolio - AJ Iñigo</title>
+
+    <link rel="icon" href="assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script defer src="https://kit.fontawesome.com/61c5d3d4be.js" crossorigin="anonymous"></script>
     <script defer src="assets/js/script.js"></script>
 </head>
 <body>
+    <!-- Skip link becomes visible on focus -->
     <a href="#main" class="sr-only sr-only-focusable">Skip to content</a>
 
     <header id="header" class="container">
         <nav id="main-nav" class="container dflex justify-around width_90" aria-label="Main navigation">
-            <div>
-                <a href="#" class="site-logo">Aj Iñigo</a>
+            <div class="site-logo">
+                <a href="#" aria-label="AJ Iñigo Portfolio Home">
+                    <svg role="img" aria-labelledby="logo-title" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 207.000000 247.000000" preserveAspectRatio="xMidYMid meet">
+                        <title>AJ Iñigo Portfolio Logo</title>
+                        <g transform="translate(0.000000,247.000000) scale(0.100000,-0.100000)" stroke="none">
+                            <path class="site-logo-svg-alt" d="M900 2236 c0 -10 54 -158 144 -396 129 -338 251 -665 267 -715 20 -63 17 -172 -8 -226 -46 -103 -160 -183 -295 -208 -57 -11 -74 -10 -129 4 -99 27 -101 26 -128 -28 -30 -61 -22 -72 74 -92 89 -19 128 -19 223 1 196 39 353 165 397 319 13 45 16 82 13 159 -5 90 -11 115 -56 236 -62 167 -209 559 -292 783 l-63 167 -74 0 c-40 0 -73 -2 -73 -4z"/>
+                            <path class="site-logo-svg" d="M928 1697 c-9 -23 -76 -197 -148 -387 -72 -190 -150 -392 -172 -450 -148 -381 -188 -487 -188 -502 0 -15 10 -18 69 -18 l70 0 21 58 c12 31 51 136 87 232 35 96 130 351 210 565 139 373 145 392 135 430 -17 64 -41 115 -55 115 -6 0 -20 -19 -29 -43z"/>
+                            <path class="site-logo-svg" d="M1513 784 c-18 -31 -33 -62 -33 -69 0 -18 120 -346 133 -362 6 -8 35 -13 79 -13 67 0 69 1 63 23 -10 32 -166 439 -177 460 -15 29 -32 19 -65 -39z"/>
+                        </g>
+                    </svg>
+                </a>
             </div>
 
-            <!-- Main menu -->
-            <div class="mobile-nav">
+            <!-- Mobile Navigation -->
+            <div class="mobile-nav" role="navigation" aria-label="Mobile menu">
                 <ul class="dflex gap-12 flex-column ">
                     <li class="active">
                         <a href="#banner">
@@ -44,7 +58,8 @@
                 </ul>
             </div>
 
-            <div class="main-menu">
+            <!-- Desktop Navigation -->
+            <div class="main-menu" role="navigation" aria-label="Desktop menu">
                 <ul class="dflex gap-12">
                     <li class="active">
                         <a href="#banner">Home</a>
@@ -65,21 +80,39 @@
             <div>
                 <ul class="dflex gap-12 social-links">
                     <li>
-                        <a href="https://www.linkedin.com/in/aj-i%C3%B1igo/" target="_blank" class="dflex justify-center linkedin" rel="noopener noreferrer" aria-describedby="linkedin-tooltip">
+                        <a href="https://www.linkedin.com/in/ajinigo/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            aria-label="Visit my LinkedIn profile"
+                            aria-describedby="linkedin-tooltip"
+                            class="dflex justify-center linkedin" 
+                        >
                             <span class="sr-only">LinkedIn</span>
                         </a>
                         <div id="linkedin-tooltip" role="tooltip" class="tooltip">LinkedIn</div>
                     </li>
 
                     <li>
-                        <a href="https://github.com/kurohoro10" target="_blank" class="dflex justify-center github" rel="noopener noreferrer" aria-describedby="github-tooltip">
+                        <a href="https://github.com/kurohoro10" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            aria-label="Visit my Github profile"
+                            aria-describedby="github-tooltip"
+                            class="dflex justify-center github"
+                        >
                             <span class="sr-only">Github</span>
                         </a>
                         <div id="github-tooltip" role="tooltip" class="tooltip">Github</div>
                     </li>
 
                     <li>
-                        <a href="https://codepen.io/so_0me" target="_blank" class="dflex justify-center codepen" rel="noopener noreferrer" aria-describedby="codepen-tooltip">
+                        <a href="https://codepen.io/so_0me" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            aria-label="Visit my CodePen profile"
+                            aria-describedby="codepen-tooltip"
+                            class="dflex justify-center codepen"
+                        >
                             <span class="sr-only">Codepen</span>
                         </a>
                         <div id="codepen-tooltip" role="tooltip" class="tooltip">Codepen</div>
@@ -101,17 +134,13 @@
                 </div>
 
                 <div class="dflex banner-buttons">
-                    <a href="#" class="btn primary-btn btn-icon">
-                        View Portfolio
-                    </a>
-                    <a href="#" class="btn gold-btn">
-                        Get in touch
-                    </a>
+                    <a href="#" class="btn primary-btn btn-icon">View Portfolio</a>
+                    <a href="#" class="btn gold-btn">Get in touch</a>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="about" aria-label="About Me">
+        <section id="about" class="about" aria-labelledby="about-heading">
             <div id="about-anchor" role="none" aria-hidden="true"></div>
             <div class="overlay" role="presentation" aria-hidden="true"></div>
             <div class="moon" role="presentation" aria-hidden="true"></div>
@@ -125,16 +154,24 @@
 
                 <div class="dflex justify-around about-info" >
                     <div class="about-text width_60">
-                        Building a website is easy.
-                        <br>
-                        Building one that users understand, trust, and enjoy using? That’s where most businesses get stuck.
-                        <br><br>
-                        I’m AJ, a web developer and UI/UX designer who helps brands solve that exact problem. I combine clean, scalable code with user-focused design to create websites that not only look good — but actually work the way your users expect them to.
-                        <br><br>
-                        Whether it’s a clunky interface, a confusing user flow, or a site that’s just not converting, I bring a problem-solving mindset to every project. I don’t just write code or push pixels — I build web experiences that feel intuitive, fast, and friction-free.
-                        <br><br>
-                        If your site isn’t doing what it’s supposed to do, let’s fix that 
-                        <br>— from the inside out.
+                        <p>
+                            Building a website is easy.
+                            <br>
+                            Building one that users understand, trust, and enjoy using? That’s where most businesses get stuck.
+                        </p>
+
+                        <p>
+                            I’m AJ, a web developer and UI/UX designer who helps brands solve that exact problem. I combine clean, scalable code with user-focused design to create websites that not only look good — but actually work the way your users expect them to.
+                        </p>
+
+                        <p>
+
+                            Whether it’s a clunky interface, a confusing user flow, or a site that’s just not converting, I bring a problem-solving mindset to every project. I don’t just write code or push pixels — I build web experiences that feel intuitive, fast, and friction-free.
+                        </p>
+
+                        <p>
+                            If your site isn’t doing what it’s supposed to do, let’s fix that — from the inside out.
+                        </p>
                     </div>
 
                     <div class="about-image width_35">
@@ -156,7 +193,7 @@
             </div>
 
             <div class="container width_90 projects-lists dflex flex-column gap-3rem">
-                <article class="project dflex">
+                <article class="project dflex" aria-labelledby="project1-title">
                     <div class="project-image">
                         <img src="" alt="screenshot of project 1">
                     </div>
@@ -178,7 +215,7 @@
                     </div>
                 </article>
 
-                <article class="project dflex">
+                <article class="project dflex" aria-labelledby="project2-title">
                     <div class="project-image">
                         <img src="" alt="screenshot of project 2">
                     </div>
@@ -210,7 +247,7 @@
                     <h2 class="text-center">Reach Out — I Don’t Byte (Usually)</h2>
                 </div>
                 <h3 class="text-center">Use the form below or shoot an email to 
-                    <a href="#">email@example.com</a> — it's like a contact form, but with fewer buttons.</h3>
+                    <a href="mailto:ajinigo27@gmail.com" class="gold-uline footer-email">ajinigo27@gmail.com</a> — it's like a contact form, but with fewer buttons.</h3>
             </div>
 
             <div class="dflex justify-between footer-form-wrap gap-3rem width_60">
@@ -218,17 +255,17 @@
                     <form id="footer-form" action="" method="POST">
                         <div class="form-group padding-1rem dflex justify-start">
                             <label for="name" class="sr-only">Name</label>
-                            <input type="text" name="name" id="name" placeholder="Name" required>
+                            <input type="text" name="name" id="name" placeholder="Name" required aria-required="true">
                         </div>
 
                         <div class="form-group padding-1rem dflex justify-start">
                             <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Email" required>
+                            <input type="email" name="email" id="email" placeholder="Email" required aria-required="true">
                         </div>
 
                         <div class="form-group padding-1rem dflex">
                             <label for="message" class="sr-only">Message</label>
-                            <textarea name="message" id="message" placeholder="Message" required></textarea>
+                            <textarea name="message" id="message" placeholder="Message"></textarea>
                         </div>
 
                         <div class="form-group padding-1rem">
@@ -247,21 +284,37 @@
             <div class="container width_90">
                 <ul class="dflex justify-end gap-12 social-links padding-1rem">
                     <li>
-                        <a href="https://www.linkedin.com/in/aj-i%C3%B1igo/" target="_blank" class="dflex justify-center linkedin" rel="noopener noreferrer" aria-describedby="footer-tooltip-linkedin">
+                        <a href="https://www.linkedin.com/in/ajinigo/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            aria-label="Visit my LinkedIn profile"
+                            aria-describedby="footer-tooltip-linkedin"
+                            class="dflex justify-center linkedin"
+                        >
                             <span class="sr-only">LinkedIn</span>
                         </a>
                         <div id="footer-tooltip-linkedin" role="tooltip" class="tooltip">LinkedIn</div>
                     </li>
 
                     <li>
-                        <a href="https://github.com/kurohoro10" target="_blank" class="dflex justify-center github" rel="noopener noreferrer" aria-describedby="footer-tooltip-github">
+                        <a href="https://github.com/kurohoro10" 
+                            target="_blank" 
+                            class="dflex justify-center github" 
+                            rel="noopener noreferrer" 
+                            aria-describedby="footer-tooltip-github"
+                        >
                             <span class="sr-only">Github</span>
                         </a>
                         <div id="footer-tooltip-github" role="tooltip" class="tooltip">Github</div>
                     </li>
 
                     <li>
-                        <a href="https://codepen.io/so_0me" target="_blank" class="dflex justify-center codepen" rel="noopener noreferrer" aria-describedby="footer-tooltip-codepen">
+                        <a href="https://codepen.io/so_0me" 
+                            target="_blank" 
+                            rel="noopener noreferrer" aria-describedby="footer-tooltip-codepen"
+                            aria-label="Visit my CodePen profile"
+                            class="dflex justify-center codepen" 
+                            >
                             <span class="sr-only">Codepen</span>
                         </a>
                         <div id="footer-tooltip-codepen" role="tooltip" class="tooltip">Codepen</div>
