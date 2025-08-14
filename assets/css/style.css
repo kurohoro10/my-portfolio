@@ -75,6 +75,7 @@ ul li { list-style-type: none; }
 a {
     text-decoration: none;
     color: var(--base_white);
+    cursor: pointer;
     transition: color ease-in-out 0.45s;
 }
 
@@ -120,6 +121,7 @@ input, textarea {
     padding: 0.625em clamp(10px, 4vw, 1em);
     border-radius: 50px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .btn:focus {
@@ -194,6 +196,43 @@ input, textarea {
     background-color: var(--white_50);
 }
 
+/* Dropdown */
+.dropdown::before {
+    content: " ";
+    position: absolute;
+    top: 0%;
+    left: 45%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--base_black) transparent ;
+    border-radius: 0;
+}
+
+.dropdown {
+    position: absolute;
+    overflow: hidden;
+    min-width: 50px;
+    max-width: 100px;
+    left: -60%;
+    top: 110%;
+    padding: 10px 1rem 1rem 1rem;
+    animation: fade_in 0.5s linear forwards, 
+               slide_down_subtle 0.5s linear forwards;
+    display: none;
+}
+
+.dropdown-content {
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--base_black);
+    box-shadow: 1px 1px 15px var(--black_subtle);
+}
+
+.dropdown-content p {
+    margin: 0;
+    word-wrap: break-word;
+}
+
 .tooltip {
   position: absolute;
   left: -300%;
@@ -203,7 +242,6 @@ input, textarea {
   padding: 0.5rem;
   border-radius: 4px;
   font-size: 0.875rem;
-  z-index: 100;
   max-width: 200px;
   display: none;
 }
@@ -245,6 +283,10 @@ footer {
     transition: all ease-in-out 0.45s;
 }
 
+#codepen-tooltip {
+    left: -330%;
+}
+
 .linkedin:hover,
 .github:hover,
 .codepen:hover {
@@ -257,10 +299,11 @@ a.linkedin:focus + .tooltip,
 a.github:hover + .tooltip,
 a.github:focus + .tooltip,
 a.codepen:hover + .tooltip,
-a.codepen:focus + .tooltip {
+a.codepen:focus + .tooltip,
+a.accessibility:hover + .tooltip {
     display: block;
     animation: fade_in 0.3s linear forwards, 
-               slide_in_subtle 0.3s linear forwards;
+               slide_left_subtle 0.3s linear forwards;
 }
 
 .linkedin:hover { color: var(--linkedin_blue); }
@@ -273,7 +316,8 @@ a.codepen:focus + .tooltip {
 .github::before,
 .codepen::before,
 .btn-icon::after,
-.mobile-nav ul li a::before {
+.mobile-nav ul li a::before,
+.accessibility::after  {
     font-family: "FontAwesome";
     font-style: normal;
     font-weight: normal;
@@ -376,6 +420,7 @@ nav {
     background-color: var(--black_25);
     border-radius: 50px;
     padding: 0 1rem;
+    /* box-shadow: 1px 1px 15px var(--black_subtle); */
 }
 
 .main-menu ul li { 
@@ -454,6 +499,30 @@ nav {
   visibility: hidden;
 }
 
+.accessibility, .accessibility::after {
+    transition: all ease-in-out 0.3s;
+}
+
+.accessibility::after {
+    content: "\f107";
+    font-size: 10px;
+    margin-left: 3px;
+}
+
+.accessibility:hover, .accessibility:hover::after  {
+    color: var(--base_gold);
+    transform: scale(1.2);
+}
+
+.dropdown-btn:hover .dropdown {
+    display: block;
+}
+
+#accessibility-tooltip {
+    left: -260%;
+    top: -20%;
+}
+
 
 @media screen and (min-width: 768px) {
     .main-menu { display: block; }
@@ -506,7 +575,6 @@ nav {
 #banner h1 span { 
     color: transparent;
     font-weight: 800;
-    /* font-size: clamp(); */
     -webkit-text-stroke: 1px var(--white_50);
     animation: flicker 2s infinite linear;
     transition: all ease-in-out 0.3s;
@@ -515,7 +583,7 @@ nav {
 #banner h1:hover span {
     animation: none;
     -webkit-text-stroke: 1px var(--base_gold);
-    text-shadow: 1px 1px 15px var(--base_gold);
+    text-shadow: 1px 1px 25px var(--base_gold);
 }
 
 .banner-buttons { 
@@ -693,9 +761,14 @@ footer {
     100% { opacity: 1; }
 }
 
-@keyframes slide_in_subtle {
+@keyframes slide_left_subtle {
     0% { transform: translateX(10px); }
     100% { transform: translateX(0); }
+}
+
+@keyframes slide_down_subtle {
+    0% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
 }
 
 @keyframes flicker {
