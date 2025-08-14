@@ -642,7 +642,7 @@ nav {
     .project-links { 
         flex-direction: row;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
     }
 }
 
