@@ -509,12 +509,17 @@ nav {
     margin-left: 3px;
 }
 
-.accessibility:hover, .accessibility:hover::after  {
+.dropdown-btn.active .accessibility,
+.dropdown-btn.active .accessibility::after {
     color: var(--base_gold);
     transform: scale(1.2);
 }
 
-.dropdown-btn:hover .dropdown {
+.dropdown-btn.active .accessibility::after {
+    transform: rotate(-180deg);
+}
+
+.dropdown-btn.active .dropdown {
     display: block;
 }
 
