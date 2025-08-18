@@ -16,6 +16,10 @@
     --dark_blue_80: #202736c9;
     --base_dark: #181D23;
     --base_gold: #F9B700;
+    --errorbg: #fdd7d7;
+    --base_error: #ff0000;
+    --base_success: #008000;
+    --successbg: #dbffdb;
 
     /* Fonts */
     --playfair_font: "Playfair Display", serif;
@@ -194,6 +198,26 @@ input, textarea {
     left: 0;
     z-index: 1;
     background-color: var(--white_50);
+}
+
+.hidden {
+    display: none;
+}
+
+.error, .success {
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.error {
+    background: var(--errorbg);
+    color: var(--base_error);
+}
+
+.success {
+    background: var(--successbg);
+    color: var(--base_success);
 }
 
 /* Dropdown */
