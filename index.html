@@ -327,6 +327,9 @@
                 <div class="footer-form">
                     <form id="footer-form" action="https://formspree.io/f/xwpqzwrz" method="POST">
                         <p id="my-form-status" class="hidden"></p>
+                        <input type="text" name="company" id="company" style="display: none;" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="formLoadedAt" id="formLoadedAt">
+                        <input type="hidden" name="formToken" id="formToken">
                         <div class="form-group padding-1rem dflex justify-start">
                             <label for="name" class="sr-only">Name</label>
                             <input type="text" name="name" id="name" placeholder="Name" required aria-required="true">
