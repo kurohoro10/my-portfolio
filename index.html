@@ -1,404 +1,977 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio - AJ Iñigo</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AJ Iñigo — Web Developer & UI/UX Designer</title>
+<meta name="description" content="AJ Iñigo is a web developer and UI/UX designer who builds clean, scalable web experiences that users love." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0f0e0d;
+    --ink-muted: #6b6560;
+    --ink-faint: #b5b0ab;
+    --paper: #f7f4f0;
+    --paper-warm: #eeeae4;
+    --paper-card: #ffffff;
+    --accent: #1a1a2e;
+    --accent-mid: #2d2b55;
+    --highlight: #e8633a;
+    --highlight-soft: #fbeee9;
+    --border: rgba(15,14,13,0.10);
+    --border-strong: rgba(15,14,13,0.18);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --nav-h: 64px;
+    --max-w: 1100px;
+    --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+  }
 
-    <link rel="icon" href="assets/images/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #f0ede8;
+      --ink-muted: #9e9890;
+      --ink-faint: #5a5550;
+      --paper: #141210;
+      --paper-warm: #1c1a17;
+      --paper-card: #201e1b;
+      --accent: #d4cfe8;
+      --accent-mid: #a09cc8;
+      --highlight: #f07550;
+      --highlight-soft: #2a1a13;
+      --border: rgba(240,237,232,0.08);
+      --border-strong: rgba(240,237,232,0.15);
+    }
+  }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script defer src="https://kit.fontawesome.com/61c5d3d4be.js" crossorigin="anonymous"></script>
-    <script defer src="assets/js/script.js"></script>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0;
+    margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+  }
+
+  /* ── SKIP LINK ── */
+  .skip-link {
+    position: fixed; top: 12px; left: 12px; z-index: 9999;
+    background: var(--highlight); color: #fff;
+    padding: 10px 20px; border-radius: var(--radius-pill);
+    font-weight: 500; font-size: 14px;
+    transform: translateY(-200%); transition: transform 0.2s;
+  }
+  .skip-link:focus { transform: translateY(0); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    display: flex; align-items: center;
+    background: color-mix(in srgb, var(--paper) 85%, transparent);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: background var(--transition);
+  }
+
+  .nav-inner {
+    max-width: var(--max-w); width: 100%; margin: 0 auto;
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+  .nav-logo span { color: var(--highlight); }
+
+  .nav-links {
+    display: flex; gap: 2px; list-style: none;
+  }
+  .nav-links a {
+    display: block; padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 14px; font-weight: 400;
+    color: var(--ink-muted);
+    transition: background var(--transition), color var(--transition);
+  }
+  .nav-links a:hover,
+  .nav-links a[aria-current="page"] {
+    background: var(--paper-warm);
+    color: var(--ink);
+  }
+  .nav-links a:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+  }
+
+  .nav-cta {
+    background: var(--ink) !important;
+    color: var(--paper) !important;
+    padding: 7px 18px !important;
+    border-radius: var(--radius-pill) !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    transition: opacity var(--transition) !important;
+  }
+  .nav-cta:hover { opacity: 0.82 !important; }
+
+  /* mobile menu */
+  .menu-toggle {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    padding: 8px; color: var(--ink);
+    border-radius: var(--radius-sm);
+  }
+  .menu-toggle:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+  }
+  .menu-toggle svg { display: block; }
+
+  @media (max-width: 680px) {
+    .menu-toggle { display: flex; align-items: center; }
+    .nav-links {
+      position: absolute; top: var(--nav-h); left: 0; right: 0;
+      flex-direction: column; gap: 0;
+      background: var(--paper-card);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      display: none;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 12px 16px; border-radius: var(--radius-md); }
+    .nav-cta { margin-top: 8px; text-align: center; }
+  }
+
+  /* ── SECTIONS SHARED ── */
+  main { padding-top: var(--nav-h); }
+
+  section {
+    max-width: var(--max-w); margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--highlight);
+    margin-bottom: 16px;
+  }
+  .section-tag::before {
+    content: ''; display: block;
+    width: 18px; height: 2px; background: var(--highlight);
+    border-radius: 2px;
+  }
+
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .section-sub {
+    font-size: 18px; color: var(--ink-muted);
+    max-width: 560px; line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    padding-top: calc(var(--nav-h) + 60px);
+    padding-bottom: 80px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 48px; align-items: center;
+  }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo { order: -1; }
+    .hero-photo img { width: 200px; height: 200px; }
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--highlight-soft); color: var(--highlight);
+    border: 1px solid color-mix(in srgb, var(--highlight) 25%, transparent);
+    padding: 6px 14px; border-radius: var(--radius-pill);
+    font-size: 13px; font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--highlight); flex-shrink: 0;
+  }
+
+  h1.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 72px);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  h1.hero-title em {
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  .hero-body {
+    font-size: 18px; color: var(--ink-muted);
+    max-width: 500px; line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 26px; border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 500;
+    transition: opacity var(--transition), transform var(--transition);
+    cursor: pointer;
+  }
+  .btn:focus-visible { outline: 2px solid var(--highlight); outline-offset: 3px; }
+  .btn:hover { opacity: 0.86; transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-primary {
+    background: var(--ink); color: var(--paper);
+    border: 1px solid transparent;
+  }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--border-strong);
+  }
+
+  .hero-social {
+    display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap;
+  }
+  .hero-social a {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; font-weight: 500; color: var(--ink-muted);
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    transition: border-color var(--transition), color var(--transition), background var(--transition);
+  }
+  .hero-social a:hover { border-color: var(--border-strong); color: var(--ink); background: var(--paper-warm); }
+  .hero-social a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+  .hero-social svg { width: 15px; height: 15px; }
+
+  .hero-photo {
+    position: relative; display: flex; justify-content: center;
+  }
+  .hero-photo img {
+    width: 340px; height: 380px;
+    object-fit: cover; object-position: top;
+    border-radius: var(--radius-lg);
+    filter: grayscale(10%);
+  }
+  .hero-photo-frame {
+    position: absolute; inset: 0;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    pointer-events: none;
+  }
+  .hero-badge {
+    position: absolute; bottom: 20px; left: -20px;
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    font-size: 13px;
+  }
+  .hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+  .hero-badge-text { font-weight: 500; color: var(--ink); }
+  .hero-badge-sub { color: var(--ink-muted); font-size: 11px; margin-top: 1px; }
+
+  @media (max-width: 860px) {
+    .hero-badge { left: 50%; transform: translateX(-50%); bottom: -16px; white-space: nowrap; }
+    .hero-photo { padding-bottom: 32px; }
+  }
+
+  /* decor dots */
+  .hero-decor {
+    position: absolute; top: -40px; right: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle at center, color-mix(in srgb, var(--highlight) 12%, transparent) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--paper-warm); border-radius: var(--radius-lg); margin: 0 24px; max-width: calc(var(--max-w) - 0px); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: start;
+  }
+
+  @media (max-width: 680px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  .about-body { font-size: 17px; color: var(--ink-muted); line-height: 1.8; }
+  .about-body p + p { margin-top: 16px; }
+
+  .skills-list {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 24px;
+  }
+  .skill-chip {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 13px; font-weight: 400;
+  }
+
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-top: 8px;
+  }
+
+  .stat-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 20px 16px;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 36px; line-height: 1;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .stat-label { font-size: 13px; color: var(--ink-muted); }
+
+  /* ── PROJECTS ── */
+  .projects-header { margin-bottom: 48px; }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+  .project-card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+  }
+  .project-card:focus-within {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+  }
+
+  .project-img {
+    width: 100%; aspect-ratio: 16/9;
+    overflow: hidden; background: var(--paper-warm);
+  }
+  .project-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .project-card:hover .project-img img { transform: scale(1.04); }
+
+  .project-body { padding: 20px 20px 20px; flex: 1; display: flex; flex-direction: column; }
+
+  .project-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--highlight);
+    margin-bottom: 8px;
+  }
+
+  h3.project-title {
+    font-family: var(--font-display);
+    font-size: 20px; line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .project-desc {
+    font-size: 14px; color: var(--ink-muted);
+    line-height: 1.65; flex: 1;
+    margin-bottom: 20px;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .project-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink);
+    padding: 8px 16px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    transition: background var(--transition), border-color var(--transition);
+    align-self: flex-start;
+  }
+  .project-link:hover { background: var(--paper-warm); }
+  .project-link:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+  .project-link svg { width: 13px; height: 13px; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--paper-warm);
+    border-radius: var(--radius-lg);
+    margin: 0 24px 80px;
+  }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+  }
+
+  @media (max-width: 680px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  .contact-info { padding-right: 16px; }
+  .contact-email-link {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 28px);
+    color: var(--highlight);
+    margin: 16px 0 24px;
+    border-bottom: 2px solid color-mix(in srgb, var(--highlight) 30%, transparent);
+    padding-bottom: 4px;
+    transition: border-color var(--transition);
+  }
+  .contact-email-link:hover { border-color: var(--highlight); }
+  .contact-email-link:focus-visible { outline: 2px solid var(--highlight); outline-offset: 4px; }
+
+  .contact-social-row {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px;
+  }
+  .contact-social-row a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink);
+    padding: 8px 16px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    transition: background var(--transition), border-color var(--transition);
+  }
+  .contact-social-row a:hover { background: var(--paper-card); }
+  .contact-social-row a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+
+  /* ── FORM ── */
+  form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  label {
+    font-size: 13px; font-weight: 500; color: var(--ink-muted);
+  }
+
+  input, textarea {
+    background: var(--paper-card);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 15px; color: var(--ink);
+    width: 100%;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    -webkit-appearance: none;
+  }
+  input::placeholder, textarea::placeholder { color: var(--ink-faint); }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--highlight);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--highlight) 18%, transparent);
+  }
+  textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    background: var(--ink); color: var(--paper);
+    border: none; border-radius: var(--radius-pill);
+    padding: 14px 28px;
+    font-family: var(--font-body);
+    font-size: 15px; font-weight: 500;
+    cursor: pointer;
+    transition: opacity var(--transition), transform var(--transition);
+    align-self: flex-start;
+  }
+  .form-submit:hover { opacity: 0.82; transform: translateY(-1px); }
+  .form-submit:active { transform: translateY(0); }
+  .form-submit:focus-visible { outline: 2px solid var(--highlight); outline-offset: 3px; }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: var(--max-w); margin: 0 auto;
+    padding: 32px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-logo { font-family: var(--font-display); font-size: 18px; }
+  .footer-logo span { color: var(--highlight); }
+  .footer-copy { font-size: 13px; color: var(--ink-muted); }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    max-width: var(--max-w); margin: 0 auto 0;
+    padding: 0 24px;
+  }
+
+  /* ── ANIMATE ON SCROLL (simple) ── */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1), transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  .fade-up:nth-child(2) { transition-delay: 0.08s; }
+  .fade-up:nth-child(3) { transition-delay: 0.16s; }
+  .fade-up:nth-child(4) { transition-delay: 0.24s; }
+  .fade-up:nth-child(5) { transition-delay: 0.32s; }
+
+  /* ── FOCUS MANAGEMENT ── */
+  :focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+  }
+
+  /* High contrast media query */
+  @media (forced-colors: active) {
+    .btn-primary { background: ButtonText; color: ButtonFace; }
+    .hero-badge-dot { background: Highlight; }
+  }
+</style>
 </head>
 <body>
-    <!-- Skip link becomes visible on focus -->
-    <a href="#main" class="sr-only sr-only-focusable">Skip to content</a>
 
-    <header id="header" class="container">
-        <nav id="main-nav" class="container dflex justify-around width_90" aria-label="Main navigation">
-            <div class="site-logo">
-                <a href="#" aria-label="AJ Iñigo Portfolio Home">
-                    <svg role="img" aria-labelledby="logo-title" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 207.000000 247.000000" preserveAspectRatio="xMidYMid meet">
-                        <title>AJ Iñigo Portfolio Logo</title>
-                        <g transform="translate(0.000000,247.000000) scale(0.100000,-0.100000)" stroke="none">
-                            <path class="site-logo-svg-alt" d="M900 2236 c0 -10 54 -158 144 -396 129 -338 251 -665 267 -715 20 -63 17 -172 -8 -226 -46 -103 -160 -183 -295 -208 -57 -11 -74 -10 -129 4 -99 27 -101 26 -128 -28 -30 -61 -22 -72 74 -92 89 -19 128 -19 223 1 196 39 353 165 397 319 13 45 16 82 13 159 -5 90 -11 115 -56 236 -62 167 -209 559 -292 783 l-63 167 -74 0 c-40 0 -73 -2 -73 -4z"/>
-                            <path class="site-logo-svg" d="M928 1697 c-9 -23 -76 -197 -148 -387 -72 -190 -150 -392 -172 -450 -148 -381 -188 -487 -188 -502 0 -15 10 -18 69 -18 l70 0 21 58 c12 31 51 136 87 232 35 96 130 351 210 565 139 373 145 392 135 430 -17 64 -41 115 -55 115 -6 0 -20 -19 -29 -43z"/>
-                            <path class="site-logo-svg" d="M1513 784 c-18 -31 -33 -62 -33 -69 0 -18 120 -346 133 -362 6 -8 35 -13 79 -13 67 0 69 1 63 23 -10 32 -166 439 -177 460 -15 29 -32 19 -65 -39z"/>
-                        </g>
-                    </svg>
-                </a>
-            </div>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-            <!-- Mobile Navigation -->
-            <div class="mobile-nav" role="navigation" aria-label="Mobile menu">
-                <ul class="dflex gap-12 flex-column ">
-                    <li class="active">
-                        <a href="#banner">
-                            <span class="sr-only">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#about-anchor">
-                            <span class="sr-only">About</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#projects-anchor">
-                            <span class="sr-only">Portfolio</span>
-                        </a>
-                    </li>  
-                    <li>
-                        <a href="#footer">
-                            <span class="sr-only">Contact</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+<!-- ── NAV ── -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="AJ Iñigo — home">AJ<span>.</span></a>
 
-            <!-- Desktop Navigation -->
-            <div class="main-menu" role="navigation" aria-label="Desktop menu">
-                <ul class="dflex gap-12">
-                    <li class="active">
-                        <a href="#banner">Home</a>
-                    </li>
-                    <li>
-                        <a href="#about-anchor">About</a>
-                    </li>
-                    <li>
-                        <a href="#projects-anchor">Portfolio</a>
-                    </li>  
-                    <li>
-                        <a href="#footer">Contact</a>
-                    </li>
-                </ul>
-            </div>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="19" y2="6"/>
+        <line x1="3" y1="11" x2="19" y2="11"/>
+        <line x1="3" y1="16" x2="19" y2="16"/>
+      </svg>
+    </button>
 
-            <!-- Social Links -->
-            <div>
-                <ul class="dflex gap-12 social-links">
-                    <li>
-                        <a href="https://www.linkedin.com/in/ajinigo/" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            aria-label="Visit my LinkedIn profile"
-                            aria-describedby="linkedin-tooltip"
-                            class="dflex justify-center linkedin" 
-                        >
-                            <span class="sr-only">LinkedIn</span>
-                        </a>
-                        <div id="linkedin-tooltip" role="tooltip" class="tooltip">LinkedIn</div>
-                    </li>
+    <ul class="nav-links" id="navMenu" role="list">
+      <li><a href="#hero" aria-current="page">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
 
-                    <li>
-                        <a href="https://github.com/kurohoro10" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            aria-label="Visit my Github profile"
-                            aria-describedby="github-tooltip"
-                            class="dflex justify-center github"
-                        >
-                            <span class="sr-only">Github</span>
-                        </a>
-                        <div id="github-tooltip" role="tooltip" class="tooltip">Github</div>
-                    </li>
+<main id="main">
 
-                    <li>
-                        <a href="https://codepen.io/so_0me" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            aria-label="Visit my CodePen profile"
-                            aria-describedby="codepen-tooltip"
-                            class="dflex justify-center codepen"
-                        >
-                            <span class="sr-only">Codepen</span>
-                        </a>
-                        <div id="codepen-tooltip" role="tooltip" class="tooltip">Codepen</div>
-                    </li>
+  <!-- ── HERO ── -->
+  <section id="hero" aria-labelledby="hero-title">
+    <div class="hero-decor" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow" role="status">Open to work</div>
 
-                    <li class="dropdown-btn">
-                        <a  href="#"
-                            aria-label="Change accessibility" 
-                            aria-describedby="accessibility-tooltip"
-                            class="dflex justify-center accessibility" 
-                        >
-                            <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
-                            <span class="sr-only">Accessibility</span>
-                        </a>
-                        <div id="accessibility-tooltip" role="tooltip" class="tooltip">Accessibility</div>
+        <h1 id="hero-title" class="hero-title">
+          I solve problems<br /><em>with code.</em>
+        </h1>
 
-                        <div class="dropdown">
-                            <div class="dropdown-content">
-                                <p>Coming soon.</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+        <p class="hero-body">
+          Building a website is easy. Building one that users understand, trust, and enjoy using? That's where I come in. I'm AJ — a web developer and UI/UX designer who crafts clean, scalable web experiences.
+        </p>
 
-    <main id="main">
-        <section id="banner" class="banner dflex" aria-label="Introduction">
-            <div class="moon" role="presentation" aria-hidden="true"></div>
-            <div class="container width_90 banner-content">
-                <div class="banner-text">
-                    <h1>
-                        I solve <span>problems</span> with code ... <br>
-                        ...because duct tape isn't <span>scalable.</span>
-                    </h1>
-                </div>
-
-                <div class="dflex banner-buttons">
-                    <!-- <a href="#" class="btn primary-btn btn-icon">View Portfolio</a> -->
-                    <a href="#footer" class="btn gold-btn">Get in touch</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about" aria-labelledby="about-heading">
-            <div id="about-anchor" role="none" aria-hidden="true"></div>
-            <div class="overlay" role="presentation" aria-hidden="true"></div>
-            <div class="moon" role="presentation" aria-hidden="true"></div>
-            <div class="container width_90 about-content">
-                <div class="about-header dflex justify-center flex-column">
-                    <div class="gold-uline">
-                        <h2 class="text-center">Web Dev That Doesn’t Break When You Blink</h2>
-                    </div>
-                    <h3 class="text-center">I design, I code, I debug... so you don’t have to.</h3>
-                </div>
-
-                <div class="dflex justify-around about-info" >
-                    <div class="about-text width_60">
-                        <p>
-                            Building a website is easy.
-                            <br>
-                            Building one that users understand, trust, and enjoy using? That’s where most businesses get stuck.
-                        </p>
-
-                        <p>
-                            I’m AJ, a web developer and UI/UX designer who helps brands solve that exact problem. I combine clean, scalable code with user-focused design to create websites that not only look good — but actually work the way your users expect them to.
-                        </p>
-
-                        <p>
-
-                            Whether it’s a clunky interface, a confusing user flow, or a site that’s just not converting, I bring a problem-solving mindset to every project. I don’t just write code or push pixels — I build web experiences that feel intuitive, fast, and friction-free.
-                        </p>
-
-                        <p>
-                            If your site isn’t doing what it’s supposed to do, let’s fix that — from the inside out.
-                        </p>
-                    </div>
-
-                    <div class="about-image width_35">
-                        <img src="assets/images/IMG_20230428_073922.webp" alt="Me working">
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="projects" class="projects" aria-label="Portfolio Projects">
-            <div id="projects-anchor" role="none" aria-hidden="true"></div>
-            <div class="container width_65 projects-header dflex justify-center flex-column padding-3rem">
-                <div class="gold-uline">
-                    <h2 class="text-center">Some Of My Dibs</h2>
-                </div>
-                <h3 class="text-center">
-                    A collection of personal projects, code experiments, and UI doodles from GitHub and CodePen — built in the wild pockets of my free time (a.k.a. when coffee and curiosity collide).
-                </h3>
-            </div>
-
-            <div class="container width_90 projects-lists dflex flex-column gap-3rem">
-                <article class="project dflex" aria-labelledby="project1-title">
-                    <div class="project-image dflex">
-                        <img src="assets/images/Screenshot_1.webp" alt="screenshot of project 1">
-                    </div>
-
-                    <div class="project-info">
-                        <div>
-                            <h4>Landing Page</h4>
-                            <p>A basic landing page that includes a contact form with client-side and server-side validation, implemented in PHP OOP, protected by a CSRF token, and configured with a static country code.</p>
-                        </div>
-                        
-                        <div class="project-links dflex gap-3rem">
-                            <a href="https://github.com/kurohoro10/cleaning-site-with-basic-form" class="btn primary-btn btn-icon">
-                                View on Github
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project dflex" aria-labelledby="project2-title">
-                    <div class="project-image dflex">
-                        <img src="assets/images/Screenshot_2.webp" alt="screenshot of project 2">
-                    </div>
-
-                    <div class="project-info">
-                        <div>
-                            <h4>Event Calendar</h4>
-                            <p>An interactive event calendar built with FullCalendar.js, jQuery, and Moment.js, featuring localStorage-based event persistence. Users can create, edit, and delete events with details like title, location, and description. The interface includes a pop-up event form, real-time date/time formatting, and an autocomplete search to quickly locate events. Data is saved in the browser’s storage, ensuring events remain available after page reloads without a backend.</p>
-                        </div>
-                        
-                        <div class="project-links dflex gap-3rem">
-                            <a href="https://codepen.io/so_0me/pen/zYjWPXK" class="btn primary-btn btn-icon">
-                                View on CodePen
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project dflex" aria-labelledby="project3-title">
-                    <div class="project-image dflex">
-                        <img src="assets/images/qoute management plugin.webp" alt="screenshot of project 3">
-                    </div>
-
-                    <div class="project-info">
-                        <div>
-                            <h4>Quote Management Plugin</h4>
-                            <p>A custom WordPress plugin for managing incoming service quote requests. Built as part of a task to simulate the workflow for handling client inquiries and admin approvals.</p>
-                        </div>
-                        
-                        <div class="project-links dflex gap-3rem">
-                            <a href="https://github.com/kurohoro10/Quote-Management-Plugin" class="btn primary-btn btn-icon">
-                                View on Github
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project dflex" aria-labelledby="project3-title">
-                    <div class="project-image dflex">
-                        <img src="assets/images/autodealer.webp" alt="screenshot of project 3">
-                    </div>
-
-                    <div class="project-info">
-                        <div>
-                            <h4>Autodealer tools WP Plugin</h4>
-                            <p>This is a wordpress custom plugin for autodealer or a rental.</p>
-
-                            <p>The prices for rental can be hourly, daily or weekly. This plugin is an extension plugin to WP Cardealer and Apus theme that extends its functionality.</p>
-
-                            <p>This plugin also has capability to add number plates. It uses shortcodes to add form where you can add update view and delete number plates.</p>
-                        </div>
-                        
-                        <div class="project-links dflex gap-3rem">
-                            <a href="https://github.com/kurohoro10/autodealer-tools-wp-plugin" class="btn primary-btn btn-icon">
-                                View on Github
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project dflex" aria-labelledby="project3-title">
-                    <div class="project-image dflex">
-                        <img src="assets/images/Image Carousel.webp" alt="screenshot of project 3">
-                    </div>
-
-                    <div class="project-info">
-                        <div>
-                            <h4>Responsive Image Carousel(Animation)</h4>
-                            <p>Responsive Image carousel with animation using css only I forked from codepen</p>
-                        </div>
-                        
-                        <div class="project-links dflex gap-3rem">
-                            <a href="https://codepen.io/so_0me/pen/EaVbMKL" class="btn primary-btn btn-icon">
-                                View on CodePen
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <footer id="footer" class="footer" aria-label="Contact Section">
-        <div class="container width_90 footer-content dflex justify-center flex-column">
-            <div class="footer-text dflex justify-center flex-column width_60">
-                <div class="gold-uline">
-                    <h2 class="text-center">Reach Out — I Don’t Byte (Usually)</h2>
-                </div>
-                <h3 class="text-center">Use the form below or shoot an email to 
-                    <a href="mailto:ajinigo27@gmail.com" class="gold-uline footer-email">ajinigo27@gmail.com</a> — it's like a contact form, but with fewer buttons.</h3>
-            </div>
-
-            <div class="dflex justify-between footer-form-wrap gap-3rem width_60">
-                <div class="footer-form">
-                    <form id="footer-form" action="https://formspree.io/f/xwpqzwrz" method="POST">
-                        <p id="my-form-status" class="hidden"></p>
-                        <input type="text" name="company" id="company" style="display: none;" tabindex="-1" autocomplete="off">
-                        <input type="hidden" name="formLoadedAt" id="formLoadedAt">
-                        <input type="hidden" name="formToken" id="formToken">
-                        <div class="form-group padding-1rem dflex justify-start">
-                            <label for="name" class="sr-only">Name</label>
-                            <input type="text" name="name" id="name" placeholder="Name" required aria-required="true">
-                        </div>
-
-                        <div class="form-group padding-1rem dflex justify-start">
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Email" required aria-required="true">
-                        </div>
-
-                        <div class="form-group padding-1rem dflex">
-                            <label for="message" class="sr-only">Message</label>
-                            <textarea name="message" id="message" placeholder="Message"></textarea>
-                        </div>
-
-                        <div class="form-group padding-1rem">
-                            <input type="submit" name="submit" id="submit" class="btn primary-btn" value="Send Message" aria-label="Send message form">
-                        </div>
-                    </form>
-                </div>
-
-                <div class="footer-image dflex justify-center">
-                    <img src="assets/images/favicon-32.png" alt="Site Logo">
-                </div>
-            </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary" aria-label="View my projects">
+            See my work
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-outline">Get in touch</a>
         </div>
 
-        <div class="footer-bottom">
-            <div class="container width_90">
-                <ul class="dflex justify-end gap-12 social-links padding-1rem">
-                    <li>
-                        <a href="https://www.linkedin.com/in/ajinigo/" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            aria-label="Visit my LinkedIn profile"
-                            aria-describedby="footer-tooltip-linkedin"
-                            class="dflex justify-center linkedin"
-                        >
-                            <span class="sr-only">LinkedIn</span>
-                        </a>
-                        <div id="footer-tooltip-linkedin" role="tooltip" class="tooltip">LinkedIn</div>
-                    </li>
-
-                    <li>
-                        <a href="https://github.com/kurohoro10" 
-                            target="_blank" 
-                            class="dflex justify-center github" 
-                            rel="noopener noreferrer" 
-                            aria-describedby="footer-tooltip-github"
-                        >
-                            <span class="sr-only">Github</span>
-                        </a>
-                        <div id="footer-tooltip-github" role="tooltip" class="tooltip">Github</div>
-                    </li>
-
-                    <li>
-                        <a href="https://codepen.io/so_0me" 
-                            target="_blank" 
-                            rel="noopener noreferrer" aria-describedby="footer-tooltip-codepen"
-                            aria-label="Visit my CodePen profile"
-                            class="dflex justify-center codepen" 
-                            >
-                            <span class="sr-only">Codepen</span>
-                        </a>
-                        <div id="footer-tooltip-codepen" role="tooltip" class="tooltip">Codepen</div>
-                    </li>
-                </ul>
-            </div>
+        <div class="hero-social" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/ajinigo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/kurohoro10" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in new tab)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://codepen.io/so_0me" target="_blank" rel="noopener noreferrer" aria-label="CodePen profile (opens in new tab)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/><polyline points="2 15.5 12 8.5 22 15.5"/><line x1="12" y1="2" x2="12" y2="8.5"/></svg>
+            CodePen
+          </a>
         </div>
-    </footer>
+      </div>
+
+      <div class="hero-photo" aria-hidden="true">
+        <img
+          src="https://ajinigoportfolio.vercel.app/assets/images/IMG_20230428_073922.webp"
+          alt="AJ Iñigo working at his desk"
+          width="340" height="380"
+          loading="eager"
+        />
+        <div class="hero-photo-frame"></div>
+        <div class="hero-badge" role="status" aria-live="polite">
+          <div class="hero-badge-dot" aria-hidden="true"></div>
+          <div>
+            <div class="hero-badge-text">Available for work</div>
+            <div class="hero-badge-sub">Philippines · Remote</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="about-grid">
+      <div>
+        <p class="section-tag" aria-hidden="true">About</p>
+        <h2 id="about-title" class="section-title">Web dev that doesn't break when you blink.</h2>
+
+        <div class="about-body">
+          <p>I'm AJ, a web developer and UI/UX designer who helps brands solve the gap between <em>looks good</em> and <em>actually works.</em></p>
+          <p>I combine clean, scalable code with user-focused design to create websites that feel intuitive, fast, and friction-free — whether it's a clunky interface, a confusing user flow, or a site that just isn't converting.</p>
+          <p>I don't just write code or push pixels — I build web experiences from the inside out.</p>
+        </div>
+
+        <div class="skills-list" role="list" aria-label="Skills">
+          <span class="skill-chip" role="listitem">HTML & CSS</span>
+          <span class="skill-chip" role="listitem">JavaScript</span>
+          <span class="skill-chip" role="listitem">PHP / OOP</span>
+          <span class="skill-chip" role="listitem">WordPress</span>
+          <span class="skill-chip" role="listitem">jQuery</span>
+          <span class="skill-chip" role="listitem">UI/UX Design</span>
+          <span class="skill-chip" role="listitem">Git</span>
+          <span class="skill-chip" role="listitem">Responsive Design</span>
+          <span class="skill-chip" role="listitem">REST APIs</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-num" aria-label="5 projects">5+</div>
+            <div class="stat-label">Projects shipped</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" aria-label="3 plus years">3+</div>
+            <div class="stat-label">Years building</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" aria-label="Full stack">FS</div>
+            <div class="stat-label">Full-stack capable</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" aria-label="Open to remote">🌐</div>
+            <div class="stat-label">Remote-ready</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects" aria-labelledby="projects-title">
+    <div class="projects-header">
+      <p class="section-tag" aria-hidden="true">Projects</p>
+      <h2 id="projects-title" class="section-title">Some of my dibs.</h2>
+      <p class="section-sub">Personal projects, code experiments, and UI doodles — built in the wild pockets of free time.</p>
+    </div>
+
+    <div class="projects-grid" role="list">
+
+      <article class="project-card fade-up" role="listitem" aria-labelledby="proj1-title">
+        <div class="project-img">
+          <img
+            src="https://ajinigoportfolio.vercel.app/assets/images/Screenshot_1.webp"
+            alt="Screenshot of the landing page project"
+            width="600" height="337" loading="lazy"
+          />
+        </div>
+        <div class="project-body">
+          <div class="project-tag">PHP / OOP</div>
+          <h3 id="proj1-title" class="project-title">Landing Page</h3>
+          <p class="project-desc">A landing page with a contact form featuring client-side and server-side validation, implemented in PHP OOP, protected by a CSRF token, and configured with a static country code.</p>
+          <a href="https://github.com/kurohoro10/cleaning-site-with-basic-form" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Landing Page on GitHub (opens in new tab)">
+            View on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card fade-up" role="listitem" aria-labelledby="proj2-title">
+        <div class="project-img">
+          <img
+            src="https://ajinigoportfolio.vercel.app/assets/images/Screenshot_2.webp"
+            alt="Screenshot of the event calendar project"
+            width="600" height="337" loading="lazy"
+          />
+        </div>
+        <div class="project-body">
+          <div class="project-tag">JavaScript</div>
+          <h3 id="proj2-title" class="project-title">Event Calendar</h3>
+          <p class="project-desc">Interactive event calendar built with FullCalendar.js, jQuery, and Moment.js — create, edit, and delete events with localStorage persistence and autocomplete search.</p>
+          <a href="https://codepen.io/so_0me/pen/zYjWPXK" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Event Calendar on CodePen (opens in new tab)">
+            View on CodePen
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card fade-up" role="listitem" aria-labelledby="proj3-title">
+        <div class="project-img">
+          <img
+            src="https://ajinigoportfolio.vercel.app/assets/images/qoute management plugin.webp"
+            alt="Screenshot of the quote management WordPress plugin"
+            width="600" height="337" loading="lazy"
+          />
+        </div>
+        <div class="project-body">
+          <div class="project-tag">WordPress Plugin</div>
+          <h3 id="proj3-title" class="project-title">Quote Management Plugin</h3>
+          <p class="project-desc">A custom WordPress plugin for managing incoming service quote requests — simulating the workflow for handling client inquiries and admin approvals.</p>
+          <a href="https://github.com/kurohoro10/Quote-Management-Plugin" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Quote Management Plugin on GitHub (opens in new tab)">
+            View on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card fade-up" role="listitem" aria-labelledby="proj4-title">
+        <div class="project-img">
+          <img
+            src="https://ajinigoportfolio.vercel.app/assets/images/autodealer.webp"
+            alt="Screenshot of the autodealer tools WordPress plugin"
+            width="600" height="337" loading="lazy"
+          />
+        </div>
+        <div class="project-body">
+          <div class="project-tag">WordPress Plugin</div>
+          <h3 id="proj4-title" class="project-title">Autodealer Tools Plugin</h3>
+          <p class="project-desc">A WordPress plugin for auto dealers and rentals — extends WP Cardealer with hourly, daily, or weekly pricing and number plate management via shortcodes.</p>
+          <a href="https://github.com/kurohoro10/autodealer-tools-wp-plugin" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Autodealer Tools Plugin on GitHub (opens in new tab)">
+            View on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card fade-up" role="listitem" aria-labelledby="proj5-title">
+        <div class="project-img">
+          <img
+            src="https://ajinigoportfolio.vercel.app/assets/images/Image Carousel.webp"
+            alt="Screenshot of the responsive image carousel"
+            width="600" height="337" loading="lazy"
+          />
+        </div>
+        <div class="project-body">
+          <div class="project-tag">CSS Animation</div>
+          <h3 id="proj5-title" class="project-title">Responsive Image Carousel</h3>
+          <p class="project-desc">A fully responsive image carousel with smooth animations built using CSS only — no JavaScript required.</p>
+          <a href="https://codepen.io/so_0me/pen/EaVbMKL" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Image Carousel on CodePen (opens in new tab)">
+            View on CodePen
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-tag" aria-hidden="true">Contact</p>
+        <h2 id="contact-title" class="section-title">Let's fix that — from the inside out.</h2>
+        <p class="section-sub">If your site isn't doing what it's supposed to, let's talk. I don't byte (usually).</p>
+
+        <a href="mailto:ajinigo27@gmail.com" class="contact-email-link" aria-label="Send email to ajinigo27@gmail.com">
+          ajinigo27@gmail.com
+        </a>
+
+        <div class="contact-social-row" aria-label="Social profiles">
+          <a href="https://www.linkedin.com/in/ajinigo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)">LinkedIn</a>
+          <a href="https://github.com/kurohoro10" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)">GitHub</a>
+          <a href="https://codepen.io/so_0me" target="_blank" rel="noopener noreferrer" aria-label="CodePen (opens in new tab)">CodePen</a>
+        </div>
+      </div>
+
+      <div>
+        <form
+          action="mailto:ajinigo27@gmail.com"
+          method="get"
+          aria-labelledby="form-title"
+          novalidate
+          id="contactForm"
+        >
+          <h3 id="form-title" class="sr-only">Send a message</h3>
+
+          <div class="form-group">
+            <label for="name">Name <span aria-hidden="true">*</span></label>
+            <input
+              type="text" id="name" name="name"
+              placeholder="Your name"
+              required autocomplete="name"
+              aria-required="true"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input
+              type="email" id="email" name="email"
+              placeholder="you@example.com"
+              required autocomplete="email"
+              aria-required="true"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message <span aria-hidden="true">*</span></label>
+            <textarea
+              id="message" name="body"
+              placeholder="Tell me what you're working on..."
+              required
+              aria-required="true"
+              rows="5"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Send message →
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer role="contentinfo">
+  <div class="footer-logo">AJ<span>.</span></div>
+  <p class="footer-copy">© <span id="year"></span> AJ Iñigo. Built with care.</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('navMenu');
+
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.removeAttribute('aria-current'));
+        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (active) active.setAttribute('aria-current', 'page');
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => sectionObserver.observe(s));
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    let valid = true;
+    this.querySelectorAll('[required]').forEach(field => {
+      if (!field.value.trim()) {
+        valid = false;
+        field.setAttribute('aria-invalid', 'true');
+        field.style.borderColor = 'var(--highlight)';
+      } else {
+        field.removeAttribute('aria-invalid');
+        field.style.borderColor = '';
+      }
+    });
+    if (!valid) {
+      e.preventDefault();
+      this.querySelector('[aria-invalid="true"]').focus();
+    }
+  });
+</script>
+
 </body>
 </html>
