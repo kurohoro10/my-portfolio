@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AJ Iñigo — Web Developer & UI/UX Designer</title>
-<meta name="description" content="AJ Iñigo is a web developer and UI/UX designer who builds clean, scalable web experiences that users love." />
+<title>AJ Iñigo — Full-Stack Web Developer</title>
+<meta name="description" content="Full-Stack Web Developer helping businesses launch faster with WordPress, PHP, and custom web solutions. Clean code, fast turnaround, scalable results." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -334,7 +334,7 @@
   }
 
   /* ── ABOUT ── */
-  #about { background: var(--paper-warm); border-radius: var(--radius-lg); margin: 0 auto; max-width: calc(var(--max-w) - 0px); }
+  #about { background: var(--paper-warm); border-radius: var(--radius-lg); margin: 0 24px; max-width: calc(var(--max-w) - 0px); }
 
   .about-grid {
     display: grid;
@@ -459,8 +459,102 @@
   #contact {
     background: var(--paper-warm);
     border-radius: var(--radius-lg);
-    margin: 0 auto 80px;
+    margin: 0 24px 80px;
   }
+
+  /* ── TECH STACK ── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .stack-group {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+  }
+  .stack-group-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--highlight);
+    margin-bottom: 14px;
+  }
+  .stack-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack-chip {
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    padding: 5px 12px; border-radius: var(--radius-pill);
+    font-size: 13px;
+  }
+
+  /* ── PROCESS ── */
+  .process-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .process-step {
+    display: flex; gap: 24px; align-items: flex-start;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .process-step:last-child { border-bottom: none; }
+  .process-num {
+    font-family: var(--font-display);
+    font-size: 32px; line-height: 1;
+    color: var(--ink-faint);
+    min-width: 48px; padding-top: 2px;
+    flex-shrink: 0;
+  }
+  h3.process-step-title {
+    font-size: 16px; font-weight: 500; color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .process-step-body { font-size: 14px; color: var(--ink-muted); line-height: 1.65; }
+
+  /* ── PROJECT META ── */
+  .project-meta {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 16px;
+  }
+  .project-meta-item {
+    font-size: 11px; font-weight: 500;
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+    color: var(--ink-muted);
+    padding: 3px 10px; border-radius: var(--radius-pill);
+  }
+
+  /* ── WHY WORK WITH ME ── */
+  .why-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+  .why-item {
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .why-icon {
+    color: var(--highlight); font-size: 16px; font-weight: 500;
+    padding-top: 2px; flex-shrink: 0;
+  }
+  .why-item strong { display: block; font-size: 15px; font-weight: 500; margin-bottom: 4px; color: var(--ink); }
+  .why-item p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+
+  @media (max-width: 680px) {
+    #why > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+  }
+
+  /* ── OPEN TO ── */
+  .open-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .open-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px 20px;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+  .open-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+  .open-card-icon { font-size: 24px; margin-bottom: 12px; }
+  .open-card-title { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .open-card-body { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
 
   .contact-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
@@ -604,6 +698,7 @@
     <ul class="nav-links" id="navMenu" role="list">
       <li><a href="#hero" aria-current="page">Home</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#stack">Stack</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact" class="nav-cta">Get in touch</a></li>
     </ul>
@@ -617,14 +712,14 @@
     <div class="hero-decor" aria-hidden="true"></div>
     <div class="hero-grid">
       <div class="hero-content">
-        <div class="hero-eyebrow" role="status">Open to work</div>
+        <div class="hero-eyebrow" role="status">Open to work · Remote-ready</div>
 
         <h1 id="hero-title" class="hero-title">
-          I solve problems<br /><em>with code.</em>
+          Full-Stack Web<br /><em>Developer.</em>
         </h1>
 
         <p class="hero-body">
-          Building a website is easy. Building one that users understand, trust, and enjoy using? That's where I come in. I'm AJ — a web developer and UI/UX designer who crafts clean, scalable web experiences.
+          I help businesses launch faster with clean, scalable solutions built on WordPress, PHP, and modern web technologies. 4+ years turning ideas into fast, user-focused digital products.
         </p>
 
         <div class="hero-actions">
@@ -632,7 +727,7 @@
             See my work
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </a>
-          <a href="#contact" class="btn btn-outline">Get in touch</a>
+          <a href="#contact" class="btn btn-outline">Let's talk</a>
         </div>
 
         <div class="hero-social" aria-label="Social links">
@@ -675,36 +770,35 @@
     <div class="about-grid">
       <div>
         <p class="section-tag" aria-hidden="true">About</p>
-        <h2 id="about-title" class="section-title">Web dev that doesn't break when you blink.</h2>
+        <h2 id="about-title" class="section-title">Building reliable solutions, not just websites.</h2>
 
         <div class="about-body">
-          <p>I'm AJ, a web developer and UI/UX designer who helps brands solve the gap between <em>looks good</em> and <em>actually works.</em></p>
-          <p>I combine clean, scalable code with user-focused design to create websites that feel intuitive, fast, and friction-free — whether it's a clunky interface, a confusing user flow, or a site that just isn't converting.</p>
-          <p>I don't just write code or push pixels — I build web experiences from the inside out.</p>
+          <p>I'm AJ — a web developer with 4+ years of experience building websites, plugins, automations, and business systems using WordPress, PHP, JavaScript, and modern web technologies.</p>
+          <p>I enjoy solving technical problems and adapting quickly to different platforms and workflows. Whether it's a WordPress site, a custom PHP application, or a UI that needs an overhaul — I focus on building reliable solutions that help businesses move faster.</p>
+          <p>I don't just write code or push pixels. I build things that work the way your users expect them to.</p>
         </div>
 
-        <div class="skills-list" role="list" aria-label="Skills">
-          <span class="skill-chip" role="listitem">HTML & CSS</span>
-          <span class="skill-chip" role="listitem">JavaScript</span>
-          <span class="skill-chip" role="listitem">PHP / OOP</span>
-          <span class="skill-chip" role="listitem">WordPress</span>
-          <span class="skill-chip" role="listitem">jQuery</span>
-          <span class="skill-chip" role="listitem">UI/UX Design</span>
-          <span class="skill-chip" role="listitem">Git</span>
-          <span class="skill-chip" role="listitem">Responsive Design</span>
-          <span class="skill-chip" role="listitem">REST APIs</span>
+        <div class="skills-list" role="list" aria-label="What I bring">
+          <span class="skill-chip" role="listitem">Fast turnaround</span>
+          <span class="skill-chip" role="listitem">Multi-platform adaptable</span>
+          <span class="skill-chip" role="listitem">Independent worker</span>
+          <span class="skill-chip" role="listitem">Business-focused solutions</span>
+          <span class="skill-chip" role="listitem">Clean, maintainable code</span>
+          <span class="skill-chip" role="listitem">Semantic HTML & accessibility</span>
+          <span class="skill-chip" role="listitem">Responsive design</span>
+          <span class="skill-chip" role="listitem">Performance optimization</span>
         </div>
       </div>
 
       <div>
         <div class="stat-grid">
           <div class="stat-card">
-            <div class="stat-num" aria-label="5 projects">5+</div>
-            <div class="stat-label">Projects shipped</div>
+            <div class="stat-num" aria-label="4 plus years">4+</div>
+            <div class="stat-label">Years of experience</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num" aria-label="3 plus years">3+</div>
-            <div class="stat-label">Years building</div>
+            <div class="stat-num" aria-label="20 plus projects">20+</div>
+            <div class="stat-label">Projects completed</div>
           </div>
           <div class="stat-card">
             <div class="stat-num" aria-label="Full stack">FS</div>
@@ -719,12 +813,107 @@
     </div>
   </section>
 
+  <!-- ── TECH STACK ── -->
+  <section id="stack" aria-labelledby="stack-title">
+    <p class="section-tag" aria-hidden="true">Tech Stack</p>
+    <h2 id="stack-title" class="section-title">Tools I build with.</h2>
+    <p class="section-sub" style="margin-bottom: 48px;">Categorized by what I actually use in real projects — not percentages.</p>
+
+    <div class="stack-grid">
+      <div class="stack-group fade-up">
+        <div class="stack-group-label">Frontend</div>
+        <div class="stack-chips">
+          <span class="stack-chip">HTML5</span>
+          <span class="stack-chip">CSS3</span>
+          <span class="stack-chip">JavaScript</span>
+          <span class="stack-chip">jQuery</span>
+          <span class="stack-chip">TailwindCSS</span>
+          <span class="stack-chip">Responsive Design</span>
+        </div>
+      </div>
+      <div class="stack-group fade-up">
+        <div class="stack-group-label">Backend</div>
+        <div class="stack-chips">
+          <span class="stack-chip">PHP / OOP</span>
+          <span class="stack-chip">MySQL</span>
+          <span class="stack-chip">REST APIs</span>
+          <span class="stack-chip">CSRF / Auth</span>
+          <span class="stack-chip">Server-side validation</span>
+        </div>
+      </div>
+      <div class="stack-group fade-up">
+        <div class="stack-group-label">CMS & Platforms</div>
+        <div class="stack-chips">
+          <span class="stack-chip">WordPress</span>
+          <span class="stack-chip">Custom WP Plugins</span>
+          <span class="stack-chip">Shortcodes</span>
+          <span class="stack-chip">WP Cardealer</span>
+        </div>
+      </div>
+      <div class="stack-group fade-up">
+        <div class="stack-group-label">Tools</div>
+        <div class="stack-chips">
+          <span class="stack-chip">Git</span>
+          <span class="stack-chip">Figma</span>
+          <span class="stack-chip">Vercel</span>
+          <span class="stack-chip">localStorage APIs</span>
+          <span class="stack-chip">FullCalendar.js</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROCESS ── -->
+  <section id="process" aria-labelledby="process-title" style="background: var(--paper-warm); border-radius: var(--radius-lg); margin: 0 24px;">
+    <p class="section-tag" aria-hidden="true">Process</p>
+    <h2 id="process-title" class="section-title">How I work.</h2>
+    <p class="section-sub" style="margin-bottom: 48px;">A practical, business-first development process — no hand-waving, no surprises.</p>
+
+    <ol class="process-list" aria-label="Development process steps">
+      <li class="process-step fade-up">
+        <div class="process-num" aria-hidden="true">01</div>
+        <div>
+          <h3 class="process-step-title">Understand business goals</h3>
+          <p class="process-step-body">I start by understanding what problem you're trying to solve — not just what you want built. This shapes every technical decision that follows.</p>
+        </div>
+      </li>
+      <li class="process-step fade-up">
+        <div class="process-num" aria-hidden="true">02</div>
+        <div>
+          <h3 class="process-step-title">Plan architecture and user flow</h3>
+          <p class="process-step-body">Before writing a line of code, I map out the structure — data flow, user paths, component breakdown — so the build is predictable and scalable.</p>
+        </div>
+      </li>
+      <li class="process-step fade-up">
+        <div class="process-num" aria-hidden="true">03</div>
+        <div>
+          <h3 class="process-step-title">Build responsive and scalable solutions</h3>
+          <p class="process-step-body">I write clean, maintainable code with accessibility and responsiveness baked in — not bolted on at the end.</p>
+        </div>
+      </li>
+      <li class="process-step fade-up">
+        <div class="process-num" aria-hidden="true">04</div>
+        <div>
+          <h3 class="process-step-title">Optimize for performance and SEO</h3>
+          <p class="process-step-body">Fast load times, semantic HTML, proper heading structure, and keyboard accessibility — engineering maturity that clients and search engines both notice.</p>
+        </div>
+      </li>
+      <li class="process-step fade-up">
+        <div class="process-num" aria-hidden="true">05</div>
+        <div>
+          <h3 class="process-step-title">Deploy and maintain</h3>
+          <p class="process-step-body">I see projects through to launch and beyond — clear handoffs, documentation, and ongoing support when needed.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
   <!-- ── PROJECTS ── -->
   <section id="projects" aria-labelledby="projects-title">
     <div class="projects-header">
       <p class="section-tag" aria-hidden="true">Projects</p>
-      <h2 id="projects-title" class="section-title">Some of my dibs.</h2>
-      <p class="section-sub">Personal projects, code experiments, and UI doodles — built in the wild pockets of free time.</p>
+      <h2 id="projects-title" class="section-title">Selected work.</h2>
+      <p class="section-sub">Real problems, real solutions — built in real time.</p>
     </div>
 
     <div class="projects-grid" role="list">
@@ -738,10 +927,15 @@
           />
         </div>
         <div class="project-body">
-          <div class="project-tag">PHP / OOP</div>
-          <h3 id="proj1-title" class="project-title">Landing Page</h3>
-          <p class="project-desc">A landing page with a contact form featuring client-side and server-side validation, implemented in PHP OOP, protected by a CSRF token, and configured with a static country code.</p>
-          <a href="https://github.com/kurohoro10/cleaning-site-with-basic-form" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Landing Page on GitHub (opens in new tab)">
+          <div class="project-tag">PHP · OOP · CSRF</div>
+          <h3 id="proj1-title" class="project-title">Service Landing Page</h3>
+          <p class="project-desc">The goal was a contact form that couldn't be spammed or abused. Built a landing page with client-side and server-side validation in PHP OOP, protected by a CSRF token — improving inquiry quality and reducing invalid submissions.</p>
+          <div class="project-meta">
+            <span class="project-meta-item">PHP OOP</span>
+            <span class="project-meta-item">Form validation</span>
+            <span class="project-meta-item">CSRF protection</span>
+          </div>
+          <a href="https://github.com/kurohoro10/cleaning-site-with-basic-form" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Service Landing Page on GitHub (opens in new tab)">
             View on GitHub
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
@@ -757,9 +951,14 @@
           />
         </div>
         <div class="project-body">
-          <div class="project-tag">JavaScript</div>
-          <h3 id="proj2-title" class="project-title">Event Calendar</h3>
-          <p class="project-desc">Interactive event calendar built with FullCalendar.js, jQuery, and Moment.js — create, edit, and delete events with localStorage persistence and autocomplete search.</p>
+          <div class="project-tag">JavaScript · jQuery · FullCalendar.js</div>
+          <h3 id="proj2-title" class="project-title">Interactive Event Calendar</h3>
+          <p class="project-desc">Built a browser-based event management tool for users who needed scheduling without a backend. Features create/edit/delete, localStorage persistence, real-time date formatting, and autocomplete search — zero server dependency.</p>
+          <div class="project-meta">
+            <span class="project-meta-item">FullCalendar.js</span>
+            <span class="project-meta-item">Moment.js</span>
+            <span class="project-meta-item">localStorage</span>
+          </div>
           <a href="https://codepen.io/so_0me/pen/zYjWPXK" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Event Calendar on CodePen (opens in new tab)">
             View on CodePen
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -776,9 +975,14 @@
           />
         </div>
         <div class="project-body">
-          <div class="project-tag">WordPress Plugin</div>
+          <div class="project-tag">WordPress · PHP · Admin UI</div>
           <h3 id="proj3-title" class="project-title">Quote Management Plugin</h3>
-          <p class="project-desc">A custom WordPress plugin for managing incoming service quote requests — simulating the workflow for handling client inquiries and admin approvals.</p>
+          <p class="project-desc">Businesses were handling service inquiries manually through email. Built a custom WordPress plugin that centralizes incoming quote requests with an admin approval workflow — reducing back-and-forth and improving response time.</p>
+          <div class="project-meta">
+            <span class="project-meta-item">Custom WP plugin</span>
+            <span class="project-meta-item">Admin workflow</span>
+            <span class="project-meta-item">PHP OOP</span>
+          </div>
           <a href="https://github.com/kurohoro10/Quote-Management-Plugin" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Quote Management Plugin on GitHub (opens in new tab)">
             View on GitHub
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -795,9 +999,14 @@
           />
         </div>
         <div class="project-body">
-          <div class="project-tag">WordPress Plugin</div>
+          <div class="project-tag">WordPress · PHP · Shortcodes</div>
           <h3 id="proj4-title" class="project-title">Autodealer Tools Plugin</h3>
-          <p class="project-desc">A WordPress plugin for auto dealers and rentals — extends WP Cardealer with hourly, daily, or weekly pricing and number plate management via shortcodes.</p>
+          <p class="project-desc">An auto dealer needed flexible rental pricing (hourly, daily, weekly) and number plate management that WP Cardealer didn't support. Extended the existing theme with a custom plugin — adding shortcode-driven forms and full CRUD for number plates.</p>
+          <div class="project-meta">
+            <span class="project-meta-item">WP Cardealer extension</span>
+            <span class="project-meta-item">Shortcodes</span>
+            <span class="project-meta-item">CRUD operations</span>
+          </div>
           <a href="https://github.com/kurohoro10/autodealer-tools-wp-plugin" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Autodealer Tools Plugin on GitHub (opens in new tab)">
             View on GitHub
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -814,9 +1023,14 @@
           />
         </div>
         <div class="project-body">
-          <div class="project-tag">CSS Animation</div>
+          <div class="project-tag">CSS · Animation · No-JS</div>
           <h3 id="proj5-title" class="project-title">Responsive Image Carousel</h3>
-          <p class="project-desc">A fully responsive image carousel with smooth animations built using CSS only — no JavaScript required.</p>
+          <p class="project-desc">Demonstrated that interactive UI components don't always need JavaScript. Built a fully responsive image carousel with smooth transitions using CSS only — zero runtime dependency, improved performance, and full keyboard accessibility.</p>
+          <div class="project-meta">
+            <span class="project-meta-item">CSS-only</span>
+            <span class="project-meta-item">No JS required</span>
+            <span class="project-meta-item">Fully responsive</span>
+          </div>
           <a href="https://codepen.io/so_0me/pen/EaVbMKL" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Image Carousel on CodePen (opens in new tab)">
             View on CodePen
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -827,13 +1041,90 @@
     </div>
   </section>
 
+  <!-- ── WHY WORK WITH ME ── -->
+  <section id="why" aria-labelledby="why-title" style="background: var(--paper-warm); border-radius: var(--radius-lg); margin: 0 24px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+      <div>
+        <p class="section-tag" aria-hidden="true">Why me</p>
+        <h2 id="why-title" class="section-title">Why work with me.</h2>
+        <p class="section-sub">Especially useful for clients who need someone they can trust to deliver.</p>
+      </div>
+      <ul class="why-list" role="list" aria-label="Reasons to work with AJ">
+        <li class="why-item fade-up">
+          <div class="why-icon" aria-hidden="true">→</div>
+          <div>
+            <strong>Fast learner across multiple systems</strong>
+            <p>I adapt quickly to new platforms, stacks, and workflows without losing momentum.</p>
+          </div>
+        </li>
+        <li class="why-item fade-up">
+          <div class="why-icon" aria-hidden="true">→</div>
+          <div>
+            <strong>Strong communication and collaboration</strong>
+            <p>I keep stakeholders in the loop and flag blockers early — no black-box development.</p>
+          </div>
+        </li>
+        <li class="why-item fade-up">
+          <div class="why-icon" aria-hidden="true">→</div>
+          <div>
+            <strong>Practical, business-focused solutions</strong>
+            <p>I build for outcomes, not just aesthetics. If it doesn't solve the problem, it doesn't ship.</p>
+          </div>
+        </li>
+        <li class="why-item fade-up">
+          <div class="why-icon" aria-hidden="true">→</div>
+          <div>
+            <strong>Independent with minimal supervision</strong>
+            <p>Give me a goal and a deadline — I'll figure out the path and keep you updated along the way.</p>
+          </div>
+        </li>
+        <li class="why-item fade-up">
+          <div class="why-icon" aria-hidden="true">→</div>
+          <div>
+            <strong>Clean, maintainable, scalable code</strong>
+            <p>Code that future-you (or your next dev) can actually read, extend, and build on.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── OPEN TO ── -->
+  <section id="open-to" aria-labelledby="open-title">
+    <p class="section-tag" aria-hidden="true">Currently open to</p>
+    <h2 id="open-title" class="section-title">What I'm looking for.</h2>
+    <p class="section-sub" style="margin-bottom: 40px;">Need a developer who can adapt fast and deliver efficiently? Let's talk.</p>
+    <div class="open-grid" role="list" aria-label="Types of opportunities I'm open to">
+      <div class="open-card fade-up" role="listitem">
+        <div class="open-card-icon" aria-hidden="true">💼</div>
+        <div class="open-card-title">Full-time remote roles</div>
+        <p class="open-card-body">Long-term positions where I can grow alongside a team and contribute consistently.</p>
+      </div>
+      <div class="open-card fade-up" role="listitem">
+        <div class="open-card-icon" aria-hidden="true">🔧</div>
+        <div class="open-card-title">Freelance projects</div>
+        <p class="open-card-body">One-off builds, fixes, or features — I deliver on scope and timeline.</p>
+      </div>
+      <div class="open-card fade-up" role="listitem">
+        <div class="open-card-icon" aria-hidden="true">🤝</div>
+        <div class="open-card-title">Agency partnerships</div>
+        <p class="open-card-body">Reliable dev support for agencies that need to scale without adding headcount.</p>
+      </div>
+      <div class="open-card fade-up" role="listitem">
+        <div class="open-card-icon" aria-hidden="true">📋</div>
+        <div class="open-card-title">Long-term contracts</div>
+        <p class="open-card-body">Ongoing development retainers where I become an extension of your team.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ── CONTACT ── -->
-  <section id="contact" aria-labelledby="contact-title">
+  <section id="contact" aria-labelledby="contact-title" style="background: var(--paper-warm); border-radius: var(--radius-lg); margin: 0 24px 80px;">
     <div class="contact-grid">
       <div class="contact-info">
         <p class="section-tag" aria-hidden="true">Contact</p>
-        <h2 id="contact-title" class="section-title">Let's fix that — from the inside out.</h2>
-        <p class="section-sub">If your site isn't doing what it's supposed to, let's talk. I don't byte (usually).</p>
+        <h2 id="contact-title" class="section-title">Let's build something reliable, scalable, and user-focused.</h2>
+        <p class="section-sub">If your site isn't doing what it's supposed to, or you have a project in mind — reach out. I respond fast.</p>
 
         <a href="mailto:ajinigo27@gmail.com" class="contact-email-link" aria-label="Send email to ajinigo27@gmail.com">
           ajinigo27@gmail.com
