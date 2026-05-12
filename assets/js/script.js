@@ -1,168 +1,67 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const nav_lists = document.querySelectorAll('.main-menu ul li a');
-  const nav_lists_mobile = document.querySelectorAll('.mobile-nav ul li a');
-  const accessibility_btn = document.querySelector('.dropdown-btn');
-  const form = document.getElementById('footer-form');
-  document.getElementById('formLoadedAt').value = Date.now();
-  const token = generateToken();
-  sessionStorage.setItem('formToken', token);
-  document.getElementById('formToken').value = token;
-  
-  nav_lists.forEach((el) => el.addEventListener('click', () => {
-      add_active_class(nav_lists, el)
-      remove_nav_slug();
-  }));
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  nav_lists_mobile.forEach(el => el.addEventListener('click', () => {
-      add_active_class(nav_lists_mobile, el)
-  }));
+const toggle = document.getElementById('menuToggle');
+const menu = document.getElementById('navMenu');
 
-  accessibility_btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      accessibility_btn.classList.toggle('active')
-  });
-  
-  form.addEventListener('submit', handleSubmit);
-    
+toggle.addEventListener('click', () => {
+const isOpen = menu.classList.toggle('open');
+toggle.setAttribute('aria-expanded', isOpen);
 });
 
-function add_active_class(array_lists, el) {
-    if (!el.classList.contains('active')) {
-        array_lists.forEach(el => el.parentElement.classList.remove('active'));
-        el.parentElement.classList.add('active');
-    }
+menu.querySelectorAll('a').forEach(link => {
+link.addEventListener('click', () => {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+});
+});
+
+document.addEventListener('click', e => {
+if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
 }
+});
 
-function remove_nav_slug() {
-    const url = window.location.href;
-    console.log(url);
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+    if (entry.isIntersecting) {
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+    }
+});
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id]');
+
+const sectionObserver = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+    if (entry.isIntersecting) {
+    navLinks.forEach(l => l.removeAttribute('aria-current'));
+    const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+    if (active) active.setAttribute('aria-current', 'page');
+    }
+});
+}, { threshold: 0.4 });
+
+sections.forEach(s => sectionObserver.observe(s));
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+let valid = true;
+this.querySelectorAll('[required]').forEach(field => {
+    if (!field.value.trim()) {
+    valid = false;
+    field.setAttribute('aria-invalid', 'true');
+    field.style.borderColor = 'var(--highlight)';
+    } else {
+    field.removeAttribute('aria-invalid');
+    field.style.borderColor = '';
+    }
+});
+if (!valid) {
+    e.preventDefault();
+    this.querySelector('[aria-invalid="true"]').focus();
 }
-
-function sanitizeInput(value) {
-    // Trim spaces & escape HTML
-    return value
-        .trim()
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-}
-
-function sanitizeFormData(formData) {
-    const sanitized = {};
-    for (let [key, value] of formData.entries()) {
-        sanitized[key] = sanitizeInput(value);
-    }
-    return sanitized;
-}
-
-function validateFormData(data) {
-    // Name validation
-    if (!data.name || data.name.length < 2) {
-        return 'Name must be at least 2 characters long.';
-    }
-    // Email validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(data.email)) {
-        return 'Please enter a valid email address.';
-    }
-}
-
-let lastSubmitTime = 0;
-
-async function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-    const sanitizedData = sanitizeFormData(formData);
-    const errorMessage = validateFormData(sanitizedData);
-    const minDelay = 3000;
-    const now = Date.now();
-
-    if (errorMessage) {
-        showMessage(errorMessage, 'error');
-        return;
-    }
-
-    if (sanitizedData.company) {
-      showMessage('Spam detected.', 'error');
-      return;
-    }
-
-    if (Date.now() - Number(sanitizedData.formLoadedAt) < minDelay) {
-      return showMessage('Form submitted too quickly. Please try again', 'error');
-    }
-
-    if (now - lastSubmitTime < 5000) {
-      showMessage('Please wait before submitting again.', 'error');
-      return;
-    }
-
-    if (!sessionStorage.getItem('formToken')) {
-      showMessage('Spam detected.', 'error');
-      return;
-    }
-
-    if (sanitizedData.formToken !== sessionStorage.getItem('formToken')) {
-      showMessage('Spam detected.', 'error');
-      return;
-    }
-
-    lastSubmitTime = now;
-
-    // Prepare FormData for submission
-    const finalData = new FormData();
-    ['name', 'email', 'message'].forEach(key => {
-        if (sanitizedData[key]) {
-          finalData.append(key, sanitizedData[key]);
-        }
-    });
-
-    try {
-        const response = await fetch(form.action, {
-            method: form.method,
-            body: finalData,
-            headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-            showMessage('Thanks for your submission!', 'success');
-            form.reset();
-            sessionStorage.removeItem('formToken');
-            
-            // Reset token after submission
-            const newToken = generateToken();
-            sessionStorage.setItem('formToken', newToken);
-            document.getElementById('formToken').value = newToken;
-        } else {
-            const data = await response.json().catch(() => null);
-            if (data?.errors) {
-                showMessage((data.errors.map(e => e.message).join(', ')), 'error');
-            } else {
-                console.error('Server error:', data);
-                showMessage('Something went wrong.', 'error');
-            }
-        }
-    } catch (error) {
-        console.error('Fetch error:', error);
-        showMessage('Network error. Please try again.', 'error');
-    }
-}
-
-function showMessage(message, message_type) {
-  const status = document.getElementById('my-form-status');
-
-  if (status) {
-    status.classList.remove('hidden', 'error', 'success');
-    status.classList.add(message_type);
-    status.textContent = message;
-  }
-
-  if (message_type === 'success') {
-    setTimeout(() => {
-      status.classList.add('hidden');
-    }, 5000)
-  }
-}
-
-function generateToken() {
-  return Math.random().toString(36).substring(2);
-}
+});
