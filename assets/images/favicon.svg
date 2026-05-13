@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="AJ Iñigo logo"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><title>AJ</title><defs>
+    <filter id="neu" x="-30%" y="-30%" width="160%" height="160%">
+      <feComposite in="SourceGraphic" in2="SourceGraphic" operator="over" result="src"></feComposite>
+      <feDropShadow dx="3" dy="3" stdDeviation="5" flood-color="#c8c5c0" result="dark-shadow"></feDropShadow>
+      <feDropShadow dx="-3" dy="-3" stdDeviation="5" flood-color="#f5f2ed" result="light-shadow"></feDropShadow>
+    </filter>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .bg   { fill: #242220; }
+        .letter { fill: #e8e4de; }
+        .dot  { fill: #e06a38; }
+      }
+    </style>
+  </defs><rect class="bg" x="2" y="2" width="60" height="60" rx="13" fill="#e0ddd8" style="filter: drop-shadow(3px 3px 5px #c8c5c0) drop-shadow(-3px -3px 5px #f5f2ed);"></rect><text class="letter" x="30" y="47" font-family="'DM Serif Display', Georgia, serif" font-size="34" font-weight="400" fill="#2c2a27" text-anchor="middle" letter-spacing="-1.5">AJ</text><circle class="dot" cx="50" cy="47" r="4" fill="#c0562a"></circle><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
