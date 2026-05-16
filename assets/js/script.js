@@ -32,7 +32,10 @@
         if (active) active.setAttribute('aria-current', 'page');
       }
     });
-  }, { threshold: 0.4 });
+  }, { 
+    threshold: 0,
+    rootMargin: '-20% 0px -70% 0px'
+  });
   sections.forEach(s => sectionObserver.observe(s));
 
   // ── FORM VALIDATION ──
@@ -155,7 +158,7 @@
   if (prefersReduced) {
     // Instantly show everything
     document.querySelectorAll(
-      '.anim-hero-word,.anim-about-char,.anim-stat,.anim-stack-group,.anim-process-step,.anim-project-card,.anim-why-item,.anim-open-card,.anim-contact-left,.anim-contact-right,.fade-up'
+      '.anim-hero-word,.anim-about-char,.anim-stat,.anim-stack-group,.anim-process-step,.anim-project-card,.anim-why-item,.anim-open-card,.anim-contact-left,.anim-contact-right,.fade-up,.anim-client-card,.anim-clients-count'
     ).forEach(el => {
       el.style.opacity = 1;
       el.style.transform = 'none';
@@ -255,12 +258,32 @@
     }, { threshold: 0.3 });
     cards.forEach(c => obs.observe(c));
   })();
+ 
+// ── CLIENTS COUNT: delayed reveal ──
+(() => {
+  const count = document.querySelector('.anim-clients-count');
+  if (!count) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      setTimeout(() => count.classList.add('in'), 300);
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+  obs.observe(count);
+})();
 
   // ── STACK GROUPS: card deck fold-open ──
   revealStaggered('.anim-stack-group', 'in', 0, 100);
 
   // ── PROCESS: staggered telegraph reveal ──
   revealStaggered('.anim-process-step', 'in', 0, 130);
+
+  // ── CLIENTS: staggered category reveal ──
+  revealStaggered('.anim-clients-category', 'in', 0, 120);
+
+  // ── CLIENT CARDS: staggered bas-relief emerge ──
+revealStaggered('.anim-client-card', 'in', 0, 70);
 
   // ── PROJECTS: bas-relief emerge ──
   revealStaggered('.anim-project-card', 'in', 0, 90);
