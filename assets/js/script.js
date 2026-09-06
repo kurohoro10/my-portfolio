@@ -214,28 +214,44 @@
     obs.observe(heading);
   })();
 
+  /**
+ * Reusable count-up animation.
+ *
+ * @param {HTMLElement} el - Element containing the number.
+ * @param {number|string} target - Target number.
+ * @param {string} suffix - Optional suffix such as "+" or "%".
+ */
+const countUp = (el, target, suffix = '') => {
+  if (!el) return;
+
+  const end = parseInt(target, 10);
+
+  if (Number.isNaN(end)) return;
+
+  const duration = 900;
+  const startTime = performance.now();
+
+  const update = (now) => {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+
+    el.textContent = Math.floor(ease * end) + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = end + suffix;
+    }
+  };
+
+  requestAnimationFrame(update);
+};
+
   // ── STAT CARDS: stamp in with count-up ──
   (() => {
     const cards = document.querySelectorAll('.stat-card');
     if (!cards.length) return;
     cards.forEach((card, i) => card.classList.add('anim-stat'));
-
-    const countUp = (el, target, suffix) => {
-      const isNum = !isNaN(parseInt(target));
-      if (!isNum) return;
-      const end = parseInt(target);
-      let current = 0;
-      const duration = 900;
-      const startTime = performance.now();
-      const update = (now) => {
-        const progress = Math.min((now - startTime) / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        current = Math.floor(ease * end);
-        el.textContent = current + suffix;
-        if (progress < 1) requestAnimationFrame(update);
-      };
-      requestAnimationFrame(update);
-    };
 
     const obs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -258,6 +274,49 @@
     }, { threshold: 0.3 });
     cards.forEach(c => obs.observe(c));
   })();
+
+  /**
+ * Clients count animation.
+ *
+ * Reveals the client count when it enters the viewport and
+ * reuses the shared countUp() helper for the number animation.
+ */
+(() => {
+  const count = document.querySelector('.anim-clients-count');
+  if (!count) return;
+
+  const num = count.querySelector('.clients-count-num');
+  if (!num) return;
+
+  const target = parseInt(
+    num.getAttribute('data-count-to') || num.textContent,
+    10
+  );
+
+  if (Number.isNaN(target)) return;
+
+  num.setAttribute('aria-hidden', 'true');
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      setTimeout(() => {
+        count.classList.add('in');
+
+        if (prefersReduced) {
+          num.textContent = target;
+        } else {
+          countUp(num, target);
+        }
+      }, 300);
+
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+
+  obs.observe(count);
+})();
  
 // ── CLIENTS COUNT: delayed reveal ──
 (() => {
