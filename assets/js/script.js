@@ -275,6 +275,25 @@ const countUp = (el, target, suffix = '') => {
     cards.forEach(c => obs.observe(c));
   })();
 
+// ── CLIENTS COUNT: derive from DOM ──
+(() => {
+  const section = document.getElementById('clients');
+  const count = section?.querySelector('.anim-clients-count');
+  if (!count) return;
+
+  const total = section.querySelectorAll('.clients-category a.client-card').length;
+  const industries = section.querySelectorAll('.clients-category').length;
+
+  count.setAttribute('aria-label', `${total} clients served`);
+
+  const num = count.querySelector('.clients-count-num');
+  num.textContent = total;
+  num.dataset.countTo = total;
+
+  count.querySelector('.clients-count-label').textContent =
+    `clients served across ${industries} ${industries === 1 ? 'industry' : 'industries'}`;
+})();
+
   /**
  * Clients count animation.
  *
